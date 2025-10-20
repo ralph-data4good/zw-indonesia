@@ -1,0 +1,123 @@
+[
+  {
+    "id": "res-001",
+    "title": "Indonesia Plastic Waste Audit 2023",
+    "summary": "Comprehensive audit of plastic waste generation, composition, and management practices across 10 major Indonesian cities",
+    "topics": ["plastics", "data", "policy"],
+    "year": 2023,
+    "format": "PDF Report",
+    "access_type": "Open Access",
+    "source": {
+      "org": "GAIA Asia Pacific",
+      "url": "https://example.com/plastic-audit-2023.pdf"
+    },
+    "featured": true,
+    "cover": null
+  },
+  {
+    "id": "res-002",
+    "title": "Zero Waste Cities Toolkit (Indonesian Edition)",
+    "summary": "Step-by-step guide for local governments to design and implement zero waste programs, including community engagement templates",
+    "topics": ["policy", "community", "toolkit"],
+    "year": 2022,
+    "format": "PDF Toolkit",
+    "access_type": "Open Access",
+    "source": {
+      "org": "YPBB Indonesia",
+      "url": "https://example.com/zw-cities-toolkit-id.pdf"
+    },
+    "featured": true,
+    "cover": null
+  },
+  {
+    "id": "res-003",
+    "title": "Economic Benefits of Waste Segregation: Case Studies from Java",
+    "summary": "Analysis of job creation, cost savings, and economic multipliers from waste bank and MRF programs in 5 Javanese cities",
+    "topics": ["economics", "recycling", "case study"],
+    "year": 2023,
+    "format": "Research Paper",
+    "access_type": "Open Access",
+    "source": {
+      "org": "University of Indonesia",
+      "url": "https://example.com/economic-benefits-segregation.pdf"
+    },
+    "featured": true,
+    "cover": null
+  },
+  {
+    "id": "res-004",
+    "title": "Composting Guide for Tropical Climates",
+    "summary": "Practical manual for household and community composting in hot, humid environments; adapted for Indonesian contexts",
+    "topics": ["organics", "composting", "guide"],
+    "year": 2021,
+    "format": "Interactive PDF",
+    "access_type": "Open Access",
+    "source": {
+      "org": "Waste4Change",
+      "url": "https://example.com/composting-guide-tropical.pdf"
+    },
+    "featured": false,
+    "cover": null
+  },
+  {
+    "id": "res-005",
+    "title": "Marine Debris Monitoring Protocol for Indonesia",
+    "summary": "Standardized methods for beach surveys, data collection, and reporting to support ocean plastic prevention efforts",
+    "topics": ["marine debris", "monitoring", "protocol"],
+    "year": 2022,
+    "format": "PDF Protocol",
+    "access_type": "Open Access",
+    "source": {
+      "org": "Divers Clean Action",
+      "url": "https://example.com/marine-debris-protocol.pdf"
+    },
+    "featured": false,
+    "cover": null
+  },
+  {
+    "id": "res-006",
+    "title": "Extended Producer Responsibility: Policy Recommendations for Indonesia",
+    "summary": "Legal and regulatory frameworks to hold producers accountable for product end-of-life management",
+    "topics": ["policy", "EPR", "advocacy"],
+    "year": 2023,
+    "format": "Policy Brief",
+    "access_type": "Open Access",
+    "source": {
+      "org": "GAIA Asia Pacific",
+      "url": "https://example.com/epr-policy-brief-indonesia.pdf"
+    },
+    "featured": true,
+    "cover": null
+  },
+  {
+    "id": "res-007",
+    "title": "Community Waste Bank Management Handbook",
+    "summary": "Operational guide for establishing and managing waste banks, including financial models and member engagement strategies",
+    "topics": ["community", "waste banks", "guide"],
+    "year": 2020,
+    "format": "PDF Handbook",
+    "access_type": "Open Access",
+    "source": {
+      "org": "Indonesian Waste Bank Association",
+      "url": "https://example.com/waste-bank-handbook.pdf"
+    },
+    "featured": false,
+    "cover": null
+  },
+  {
+    "id": "res-008",
+    "title": "Reducing Food Waste in Indonesian Markets",
+    "summary": "Best practices for traditional market vendors to minimize organics waste through improved handling and donation programs",
+    "topics": ["organics", "food waste", "case study"],
+    "year": 2022,
+    "format": "Case Study",
+    "access_type": "Open Access",
+    "source": {
+      "org": "Jakarta Food Rescue Network",
+      "url": "https://example.com/food-waste-markets.pdf"
+    },
+    "featured": true,
+    "cover": null
+  }
+]
+

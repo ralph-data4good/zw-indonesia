@@ -1,0 +1,80 @@
+[
+  {
+    "id": "evt-001",
+    "title": "Zero Waste Asia Conference 2024",
+    "description": "Regional gathering of practitioners, policymakers, and advocates to share best practices and strategies for zero waste transitions",
+    "start": "2024-11-15",
+    "end": "2024-11-17",
+    "city": "Jakarta",
+    "venue": "Jakarta Convention Center",
+    "featured": true,
+    "rsvp": "https://example.com/zwa-conference-rsvp"
+  },
+  {
+    "id": "evt-002",
+    "title": "Community Composting Workshop - Bandung",
+    "description": "Hands-on training for households and community groups on backyard composting, vermicomposting, and Takakura methods",
+    "start": "2024-11-08",
+    "end": "2024-11-08",
+    "city": "Bandung",
+    "venue": "YPBB Community Center",
+    "featured": false,
+    "rsvp": "https://example.com/composting-workshop-bandung"
+  },
+  {
+    "id": "evt-003",
+    "title": "Waste Bank Leadership Training",
+    "description": "Capacity-building program for waste bank managers covering financial management, member engagement, and impact reporting",
+    "start": "2024-12-05",
+    "end": "2024-12-06",
+    "city": "Surabaya",
+    "venue": "Bank Sampah Network Office",
+    "featured": false,
+    "rsvp": "https://example.com/waste-bank-training"
+  },
+  {
+    "id": "evt-004",
+    "title": "Plastic-Free Market Pop-Up",
+    "description": "Weekend market featuring zero waste vendors, refill stations, and sustainable product demos",
+    "start": "2024-10-28",
+    "end": "2024-10-29",
+    "city": "Bali",
+    "venue": "Ubud Central Market",
+    "featured": true,
+    "rsvp": null
+  },
+  {
+    "id": "evt-005",
+    "title": "Youth Climate Action Forum",
+    "description": "Interactive forum for young leaders to discuss zero waste solutions, circular economy, and climate justice",
+    "start": "2024-12-12",
+    "end": "2024-12-12",
+    "city": "Yogyakarta",
+    "venue": "Yogyakarta State University",
+    "featured": false,
+    "rsvp": "https://example.com/youth-forum-rsvp"
+  },
+  {
+    "id": "evt-006",
+    "title": "Corporate Zero Waste Roundtable",
+    "description": "Private sector dialogue on implementing circular economy principles and waste reduction targets",
+    "start": "2025-01-20",
+    "end": "2025-01-20",
+    "city": "Jakarta",
+    "venue": "Jakarta Sustainability Hub",
+    "featured": false,
+    "rsvp": "https://example.com/corporate-roundtable"
+  },
+  {
+    "id": "evt-007",
+    "title": "World Cleanup Day Indonesia 2024",
+    "description": "Nationwide cleanup and waste audit events coordinated across hundreds of locations",
+    "start": "2024-09-21",
+    "end": "2024-09-21",
+    "city": "Nationwide",
+    "venue": "Multiple locations",
+    "featured": true,
+    "rsvp": null
+  }
+]
+

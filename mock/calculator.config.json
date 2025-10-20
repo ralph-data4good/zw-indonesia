@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "population": 277500000,
+    "wgp_per_capita": 0.7,
+    "composition": {
+      "organics": 0.52,
+      "paper": 0.12,
+      "plastics": 0.17,
+      "metals": 0.03,
+      "glass": 0.02,
+      "others": 0.14
+    },
+    "baseline_diversion": 0.12
+  },
+  "factors": {
+    "emission_factors_tco2e_per_tonne": {
+      "organics_compost": 0.25,
+      "paper_recycle": 1.1,
+      "plastics_reuse": 1.8,
+      "metals_recycle": 2.8,
+      "glass_recycle": 0.3
+    },
+    "job_coeff_per_tonne": {
+      "organics": 0.0008,
+      "recyclables": 0.0005,
+      "reuse": 0.0012
+    }
+  }
+}
+
