@@ -56,7 +56,7 @@
       "org": "Waste4Change",
       "url": "https://example.com/composting-guide-tropical.pdf"
     },
-    "featured": false,
+    "featured": true,
     "cover": null
   },
   {
@@ -71,7 +71,7 @@
       "org": "Divers Clean Action",
       "url": "https://example.com/marine-debris-protocol.pdf"
     },
-    "featured": false,
+    "featured": true,
     "cover": null
   },
   {
@@ -116,8 +116,37 @@
       "org": "Jakarta Food Rescue Network",
       "url": "https://example.com/food-waste-markets.pdf"
     },
+    "featured": false,
+    "cover": null
+  },
+  {
+    "id": "res-009",
+    "title": "Refill Station Business Model Guide",
+    "summary": "Comprehensive guide for entrepreneurs launching zero-waste refill stores including sourcing, pricing, and marketing",
+    "topics": ["business", "refill", "entrepreneurship"],
+    "year": 2023,
+    "format": "PDF Guide",
+    "access_type": "Open Access",
+    "source": {
+      "org": "Zero Waste Indonesia",
+      "url": "https://example.com/refill-business-guide.pdf"
+    },
+    "featured": true,
+    "cover": null
+  },
+  {
+    "id": "res-010",
+    "title": "Plastic Alternatives Assessment for Indonesian Businesses",
+    "summary": "Technical evaluation of eco-friendly alternatives to common single-use plastics used in food service and retail",
+    "topics": ["plastics", "business", "alternatives"],
+    "year": 2023,
+    "format": "Technical Report",
+    "access_type": "Open Access",
+    "source": {
+      "org": "Sustainable Business Indonesia",
+      "url": "https://example.com/plastic-alternatives.pdf"
+    },
     "featured": true,
     "cover": null
   }
 ]
-

@@ -76,6 +76,31 @@
     "status": "upcoming",
     "featured": false,
     "partners": ["Jakarta Education Bureau", "Waste4Change"]
+  },
+  {
+    "id": "camp-007",
+    "title": "Refill Revolution Jakarta",
+    "tagline": "Building a network of 100+ refill stations across Greater Jakarta for zero-waste shopping",
+    "topics": ["refill", "business", "circular economy"],
+    "cta": {
+      "label": "Find Refill Stations",
+      "url": "https://example.com/refill-revolution"
+    },
+    "status": "active",
+    "featured": true,
+    "partners": ["Jakarta Sustainability Collective", "Zero Waste Indonesia"]
+  },
+  {
+    "id": "camp-008",
+    "title": "Composting for Climate Action",
+    "tagline": "Training 1,000 households in backyard composting to reduce methane emissions",
+    "topics": ["organics", "climate", "training"],
+    "cta": {
+      "label": "Join Training",
+      "url": "https://example.com/composting-training"
+    },
+    "status": "active",
+    "featured": true,
+    "partners": ["Climate Reality Indonesia", "Waste4Change"]
   }
 ]
-

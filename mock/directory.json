@@ -131,6 +131,72 @@
     "meta": {
       "description": "Proposed waste-to-energy incinerator; community opposition and environmental concerns"
     }
+  },
+  {
+    "id": "dir-011",
+    "name": "Bali Refill Hub - Canggu",
+    "entry_type": "refill",
+    "city": "Canggu",
+    "province": "Bali",
+    "coords": [115.1383, -8.6482],
+    "status_badge": "verified",
+    "endorse_score": 4.7,
+    "meta": {
+      "description": "Popular refill station for tourists and locals; cleaning products, oils, spices"
+    }
+  },
+  {
+    "id": "dir-012",
+    "name": "Semarang Community Composting Site",
+    "entry_type": "composting",
+    "city": "Semarang",
+    "province": "Central Java",
+    "coords": [110.4203, -6.9932],
+    "status_badge": "verified",
+    "endorse_score": 4.4,
+    "meta": {
+      "description": "Neighborhood-scale composting serving 500+ households",
+      "capacity_tpd": 5
+    }
+  },
+  {
+    "id": "dir-013",
+    "name": "Jakarta Reuse Center - Menteng",
+    "entry_type": "reuse_center",
+    "city": "Jakarta",
+    "province": "DKI Jakarta",
+    "coords": [106.8317, -6.1944],
+    "status_badge": "verified",
+    "endorse_score": 4.6,
+    "meta": {
+      "description": "Thrift store and repair workshop accepting donations; proceeds support community programs"
+    }
+  },
+  {
+    "id": "dir-014",
+    "name": "Denpasar Waste Bank Network Hub",
+    "entry_type": "collection_point",
+    "city": "Denpasar",
+    "province": "Bali",
+    "coords": [115.2126, -8.6705],
+    "status_badge": "verified",
+    "endorse_score": 4.2,
+    "meta": {
+      "description": "Central collection hub for 20+ neighborhood waste banks across Denpasar"
+    }
+  },
+  {
+    "id": "dir-015",
+    "name": "Medan MRF - Helvetia",
+    "entry_type": "mrf",
+    "city": "Medan",
+    "province": "North Sumatra",
+    "coords": [98.6722, 3.6135],
+    "status_badge": "verified",
+    "endorse_score": 3.8,
+    "meta": {
+      "description": "Sorting facility for mixed recyclables; serves North Sumatra region",
+      "capacity_tpd": 25
+    }
   }
 ]
-

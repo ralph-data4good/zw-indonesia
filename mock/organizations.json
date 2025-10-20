@@ -52,6 +52,35 @@
     "coords": [115.1889, -8.4095],
     "status_badge": "verified",
     "website": "https://gringgo.co"
+  },
+  {
+    "id": "org-006",
+    "name": "Zero Waste Indonesia",
+    "type": "NGO / Advocacy Network",
+    "city": "Jakarta",
+    "province": "DKI Jakarta",
+    "coords": [106.8272, -6.2088],
+    "status_badge": "verified",
+    "website": "https://zerowaste.id"
+  },
+  {
+    "id": "org-007",
+    "name": "Greenpeace Indonesia",
+    "type": "International NGO",
+    "city": "Jakarta",
+    "province": "DKI Jakarta",
+    "coords": [106.8456, -6.1944],
+    "status_badge": "verified",
+    "website": "https://greenpeace.org/indonesia"
+  },
+  {
+    "id": "org-008",
+    "name": "Bye Bye Plastic Bags",
+    "type": "Youth-led Movement",
+    "city": "Bali",
+    "province": "Bali",
+    "coords": [115.2126, -8.6705],
+    "status_badge": "verified",
+    "website": "https://byebyeplasticbags.org"
   }
 ]
-

@@ -30,6 +30,37 @@
     "summary": "Empowering households to segregate and exchange recyclables for savings while building circular economy awareness",
     "topics": ["community", "recycling", "economic incentives"],
     "coords": [112.6304, -7.9666]
+  },
+  {
+    "id": "init-005",
+    "org_id": "org-006",
+    "title": "Refill Station Expansion Program",
+    "summary": "Building a nationwide network of 500+ refill stations for package-free shopping across Indonesian cities",
+    "topics": ["refill", "business", "infrastructure"],
+    "coords": [106.8272, -6.2088]
+  },
+  {
+    "id": "init-006",
+    "org_id": "org-007",
+    "title": "Plastic-Free Seas Campaign",
+    "summary": "Multi-year advocacy campaign to eliminate single-use plastics and establish Extended Producer Responsibility legislation",
+    "topics": ["policy", "plastics", "EPR"],
+    "coords": [106.8456, -6.1944]
+  },
+  {
+    "id": "init-007",
+    "org_id": "org-008",
+    "title": "Youth Environmental Education",
+    "summary": "School programs and youth workshops empowering the next generation to champion zero waste practices",
+    "topics": ["education", "youth", "behavior change"],
+    "coords": [115.2126, -8.6705]
+  },
+  {
+    "id": "init-008",
+    "org_id": "org-005",
+    "title": "Smart Waste Data Platform",
+    "summary": "AI-powered waste tracking and analytics system helping cities optimize collection routes and diversion programs",
+    "topics": ["technology", "data", "optimization"],
+    "coords": [115.1889, -8.4095]
   }
 ]
-
