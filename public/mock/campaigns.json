@@ -1,0 +1,81 @@
+[
+  {
+    "id": "camp-001",
+    "title": "Plastic-Free July Indonesia",
+    "tagline": "Join thousands of Indonesians in refusing single-use plastics for an entire month",
+    "topics": ["plastics", "behavior change", "advocacy"],
+    "cta": {
+      "label": "Take the Pledge",
+      "url": "https://example.com/plastic-free-july"
+    },
+    "status": "active",
+    "featured": true,
+    "partners": ["YPBB", "Divers Clean Action", "Waste4Change"]
+  },
+  {
+    "id": "camp-002",
+    "title": "Ban Sachet Packaging",
+    "tagline": "Advocating for policy change to phase out single-use sachets across Indonesia",
+    "topics": ["policy", "plastics", "advocacy"],
+    "cta": {
+      "label": "Sign the Petition",
+      "url": "https://example.com/ban-sachets"
+    },
+    "status": "active",
+    "featured": true,
+    "partners": ["GAIA Asia Pacific", "Greenpeace Indonesia"]
+  },
+  {
+    "id": "camp-003",
+    "title": "Surabaya Zero Waste Challenge",
+    "tagline": "City-wide competition for neighborhoods to achieve the highest diversion rates",
+    "topics": ["community", "competition", "diversion"],
+    "cta": {
+      "label": "Register Your Neighborhood",
+      "url": "https://example.com/surabaya-zw-challenge"
+    },
+    "status": "active",
+    "featured": true,
+    "partners": ["Surabaya Environment Agency", "Bank Sampah Network"]
+  },
+  {
+    "id": "camp-004",
+    "title": "Bali Beach Clean-Up Series",
+    "tagline": "Monthly coastal clean-ups across Bali's beaches with data collection and community workshops",
+    "topics": ["marine debris", "community", "education"],
+    "cta": {
+      "label": "Join a Clean-Up",
+      "url": "https://example.com/bali-beach-cleanup"
+    },
+    "status": "active",
+    "featured": false,
+    "partners": ["Divers Clean Action", "Bye Bye Plastic Bags"]
+  },
+  {
+    "id": "camp-005",
+    "title": "EPR Now: Corporate Accountability Campaign",
+    "tagline": "Demanding Extended Producer Responsibility legislation to hold brands accountable for packaging waste",
+    "topics": ["policy", "EPR", "corporate accountability"],
+    "cta": {
+      "label": "Learn More",
+      "url": "https://example.com/epr-now"
+    },
+    "status": "active",
+    "featured": false,
+    "partners": ["GAIA Asia Pacific", "Indonesian Environmental Forum"]
+  },
+  {
+    "id": "camp-006",
+    "title": "Zero Waste Schools Program",
+    "tagline": "Piloting waste segregation and composting programs in 50 schools across Jakarta",
+    "topics": ["education", "schools", "composting"],
+    "cta": {
+      "label": "Apply for Your School",
+      "url": "https://example.com/zero-waste-schools"
+    },
+    "status": "upcoming",
+    "featured": false,
+    "partners": ["Jakarta Education Bureau", "Waste4Change"]
+  }
+]
+

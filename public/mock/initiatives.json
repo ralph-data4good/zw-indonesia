@@ -1,0 +1,35 @@
+[
+  {
+    "id": "init-001",
+    "org_id": "org-001",
+    "title": "Zero Waste Cities Program",
+    "summary": "Supporting Indonesian cities in developing comprehensive zero waste roadmaps and community engagement programs",
+    "topics": ["policy", "community", "capacity building"],
+    "coords": [107.6191, -6.9175]
+  },
+  {
+    "id": "init-002",
+    "org_id": "org-003",
+    "title": "Ocean Plastic Prevention",
+    "summary": "Beach clean-ups, research, and advocacy to prevent plastic waste from entering marine ecosystems across Indonesian coastlines",
+    "topics": ["marine debris", "advocacy", "research"],
+    "coords": [115.2126, -8.6705]
+  },
+  {
+    "id": "init-003",
+    "org_id": "org-002",
+    "title": "Corporate Waste Management Solutions",
+    "summary": "End-to-end waste management services for businesses, including segregation training, collection, and transparent reporting",
+    "topics": ["business", "recycling", "composting"],
+    "coords": [106.8456, -6.2088]
+  },
+  {
+    "id": "init-004",
+    "org_id": "org-004",
+    "title": "Community Waste Bank Network",
+    "summary": "Empowering households to segregate and exchange recyclables for savings while building circular economy awareness",
+    "topics": ["community", "recycling", "economic incentives"],
+    "coords": [112.6304, -7.9666]
+  }
+]
+

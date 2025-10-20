@@ -1,0 +1,136 @@
+[
+  {
+    "id": "dir-001",
+    "name": "Surabaya MRF - East District",
+    "entry_type": "mrf",
+    "city": "Surabaya",
+    "province": "East Java",
+    "coords": [112.7688, -7.2575],
+    "status_badge": "verified",
+    "endorse_score": 4.5,
+    "meta": {
+      "description": "Material recovery facility processing 50+ tonnes/day, serving eastern Surabaya districts",
+      "capacity_tpd": 50
+    }
+  },
+  {
+    "id": "dir-002",
+    "name": "Bandung Composting Hub",
+    "entry_type": "composting",
+    "city": "Bandung",
+    "province": "West Java",
+    "coords": [107.6089, -6.9344],
+    "status_badge": "verified",
+    "endorse_score": 4.8,
+    "meta": {
+      "description": "Community composting center accepting residential and market organics; produces high-quality compost for urban agriculture",
+      "capacity_tpd": 10
+    }
+  },
+  {
+    "id": "dir-003",
+    "name": "Refill Station - Kemang",
+    "entry_type": "refill",
+    "city": "Jakarta",
+    "province": "DKI Jakarta",
+    "coords": [106.8175, -6.2633],
+    "status_badge": "verified",
+    "endorse_score": 4.2,
+    "meta": {
+      "description": "Zero waste shop offering bulk household products, personal care, and cleaning supplies"
+    }
+  },
+  {
+    "id": "dir-004",
+    "name": "Waste Bank Cempaka Putih",
+    "entry_type": "collection_point",
+    "city": "Jakarta",
+    "province": "DKI Jakarta",
+    "coords": [106.8709, -6.1751],
+    "status_badge": "verified",
+    "endorse_score": 3.9,
+    "meta": {
+      "description": "Community-run waste bank accepting paper, plastics, metals; members earn savings"
+    }
+  },
+  {
+    "id": "dir-005",
+    "name": "Ubud Repair Café",
+    "entry_type": "reuse_center",
+    "city": "Ubud",
+    "province": "Bali",
+    "coords": [115.2623, -8.5069],
+    "status_badge": "verified",
+    "endorse_score": 5.0,
+    "meta": {
+      "description": "Community repair space for textiles, electronics, furniture; monthly workshops"
+    }
+  },
+  {
+    "id": "dir-006",
+    "name": "Jakarta Zero Waste Policy Hub",
+    "entry_type": "policy_site",
+    "city": "Jakarta",
+    "province": "DKI Jakarta",
+    "coords": [106.8272, -6.2000],
+    "status_badge": "verified",
+    "endorse_score": 4.0,
+    "meta": {
+      "description": "Provincial environment agency coordinating zero waste policies and programs"
+    }
+  },
+  {
+    "id": "dir-007",
+    "name": "Bekasi Landfill (Bantar Gebang)",
+    "entry_type": "landfill",
+    "city": "Bekasi",
+    "province": "West Java",
+    "coords": [106.9844, -6.3381],
+    "status_badge": null,
+    "endorse_score": 1.5,
+    "meta": {
+      "description": "Major landfill receiving waste from Jakarta and surrounding areas; capacity concerns flagged"
+    }
+  },
+  {
+    "id": "dir-008",
+    "name": "Makassar MRF - Antang",
+    "entry_type": "mrf",
+    "city": "Makassar",
+    "province": "South Sulawesi",
+    "coords": [119.4897, -5.1477],
+    "status_badge": "verified",
+    "endorse_score": 4.1,
+    "meta": {
+      "description": "Regional material recovery facility; partnerships with local waste banks",
+      "capacity_tpd": 30
+    }
+  },
+  {
+    "id": "dir-009",
+    "name": "Yogyakarta Community Collection Point",
+    "entry_type": "collection_point",
+    "city": "Yogyakarta",
+    "province": "Special Region of Yogyakarta",
+    "coords": [110.3695, -7.7956],
+    "status_badge": "verified",
+    "endorse_score": 4.3,
+    "meta": {
+      "description": "Drop-off point for recyclables and e-waste; operated by local youth group"
+    }
+  },
+  {
+    "id": "dir-010",
+    "name": "Bogor Incinerator (flagged for review)",
+    "entry_type": "incinerator_flagged",
+    "city": "Bogor",
+    "province": "West Java",
+    "coords": [106.7942, -6.5971],
+    "status_badge": null,
+    "endorse_score": 1.0,
+    "meta": {
+      "description": "Proposed waste-to-energy incinerator; community opposition and environmental concerns"
+    }
+  }
+]
+

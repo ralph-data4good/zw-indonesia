@@ -1,0 +1,57 @@
+[
+  {
+    "id": "org-001",
+    "name": "YPBB Indonesia",
+    "type": "NGO / Environmental Organization",
+    "city": "Bandung",
+    "province": "West Java",
+    "coords": [107.6191, -6.9175],
+    "status_badge": "verified",
+    "website": "https://ypbbindonesia.org",
+    "socials": {
+      "facebook": "ypbbindonesia",
+      "instagram": "@ypbb_indonesia"
+    }
+  },
+  {
+    "id": "org-002",
+    "name": "Waste4Change",
+    "type": "Social Enterprise",
+    "city": "Jakarta",
+    "province": "DKI Jakarta",
+    "coords": [106.8456, -6.2088],
+    "status_badge": "verified",
+    "website": "https://waste4change.com"
+  },
+  {
+    "id": "org-003",
+    "name": "Divers Clean Action",
+    "type": "Community Organization",
+    "city": "Bali",
+    "province": "Bali",
+    "coords": [115.2126, -8.6705],
+    "status_badge": "verified",
+    "website": "https://diverscleanaction.org"
+  },
+  {
+    "id": "org-004",
+    "name": "Bank Sampah Malang",
+    "type": "Waste Bank Network",
+    "city": "Malang",
+    "province": "East Java",
+    "coords": [112.6304, -7.9666],
+    "status_badge": "verified",
+    "website": null
+  },
+  {
+    "id": "org-005",
+    "name": "Gringgo Indonesia",
+    "type": "Technology / Data Platform",
+    "city": "Bali",
+    "province": "Bali",
+    "coords": [115.1889, -8.4095],
+    "status_badge": "verified",
+    "website": "https://gringgo.co"
+  }
+]
+
