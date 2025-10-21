@@ -1,0 +1,326 @@
+{
+  "designSystem": {
+    "name": "Eco-Centric Design System",
+    "version": "1.0",
+    "theme": "Environmental & Sustainability",
+    
+    "colorPalettes": {
+      "primary": {
+        "soft": ["#A8C5A3", "#B8D4B8", "#9BB89B", "#E8F0E8"],
+        "vibrant": ["#4A7C59", "#5A8C69", "#3A6C49"],
+        "accent": ["#F5C563", "#E8B84D", "#D4A440"]
+      },
+      "neutrals": {
+        "backgrounds": ["#FFFFFF", "#F8F9F8", "#F5F7F5", "#FEFFFE"],
+        "text": ["#1A1A1A", "#2D3E2D", "#3F4F3F"],
+        "borders": ["#E0E5E0", "#D5DAD5", "#C8CEC8"]
+      },
+      "dark": {
+        "navy": ["#2C3E50", "#34495E", "#1C2833"],
+        "contrast": ["#FFFFFF", "#F8F9F8"]
+      }
+    },
+
+    "typography": {
+      "fontFamilies": {
+        "primary": "Sans-serif system stack (Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto)",
+        "headings": "Sans-serif, bold weight",
+        "body": "Sans-serif, regular weight"
+      },
+      "scale": {
+        "hero": {
+          "size": "48-72px",
+          "weight": "700-900",
+          "lineHeight": "1.1-1.2",
+          "letterSpacing": "-0.02em"
+        },
+        "h1": {
+          "size": "32-48px",
+          "weight": "700-800",
+          "lineHeight": "1.2-1.3"
+        },
+        "h2": {
+          "size": "24-32px",
+          "weight": "600-700",
+          "lineHeight": "1.3-1.4"
+        },
+        "body": {
+          "size": "16-18px",
+          "weight": "400",
+          "lineHeight": "1.6-1.7"
+        },
+        "small": {
+          "size": "14-15px",
+          "weight": "400",
+          "lineHeight": "1.5"
+        }
+      },
+      "styles": {
+        "uppercase": "Used sparingly for labels/tags",
+        "emphasis": "Bold weight for key metrics and CTAs"
+      }
+    },
+
+    "spacing": {
+      "scale": "8px base unit",
+      "values": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px",
+        "2xl": "48px",
+        "3xl": "64px",
+        "4xl": "96px"
+      },
+      "sectionPadding": "64-128px vertical",
+      "containerMaxWidth": "1280-1440px",
+      "contentMaxWidth": "1120px"
+    },
+
+    "borderRadius": {
+      "none": "0px",
+      "sm": "8px",
+      "md": "12px",
+      "lg": "16px",
+      "xl": "24px",
+      "2xl": "32px",
+      "pill": "999px",
+      "circle": "50%"
+    },
+
+    "shadows": {
+      "sm": "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)",
+      "md": "0 4px 6px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.03)",
+      "lg": "0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.05)",
+      "organic": "Soft, diffused shadows with low opacity (0.04-0.08)"
+    },
+
+    "components": {
+      "buttons": {
+        "primary": {
+          "background": "Solid sage green or dark green",
+          "text": "White or dark text",
+          "borderRadius": "pill or 12px",
+          "padding": "12-16px horizontal, 10-14px vertical",
+          "hoverEffect": "Slight darken or scale(1.02)",
+          "fontSize": "14-16px",
+          "fontWeight": "500-600"
+        },
+        "secondary": {
+          "background": "White or transparent",
+          "border": "1-2px solid green or dark",
+          "text": "Dark green or primary color",
+          "borderRadius": "pill or 12px"
+        },
+        "ghost": {
+          "background": "Transparent",
+          "text": "Primary color",
+          "hoverEffect": "Background tint"
+        }
+      },
+
+      "cards": {
+        "standard": {
+          "background": "White or very light tint",
+          "borderRadius": "12-24px",
+          "padding": "24-32px",
+          "shadow": "sm or md",
+          "border": "Optional 1px subtle border",
+          "hoverEffect": "Lift with increased shadow"
+        },
+        "organic": {
+          "borderRadius": "24-32px for more organic feel",
+          "shapes": "Asymmetric rounded corners possible"
+        },
+        "image": {
+          "aspectRatio": "16:9, 4:3, or 1:1",
+          "objectFit": "cover",
+          "borderRadius": "Inherits card radius"
+        }
+      },
+
+      "statsDisplay": {
+        "layout": "Grid or flexbox, equal width columns",
+        "numberStyle": {
+          "fontSize": "32-48px",
+          "fontWeight": "700-800",
+          "color": "Primary dark"
+        },
+        "labelStyle": {
+          "fontSize": "14-16px",
+          "fontWeight": "400-500",
+          "color": "Muted gray"
+        },
+        "spacing": "24-32px between items",
+        "background": "White card or transparent"
+      },
+
+      "navigation": {
+        "header": {
+          "height": "64-80px",
+          "background": "White or transparent with blur",
+          "padding": "16-24px horizontal",
+          "sticky": "Yes, with shadow on scroll",
+          "logo": "Left aligned, 32-40px height"
+        },
+        "links": {
+          "fontSize": "14-16px",
+          "fontWeight": "500",
+          "spacing": "24-32px between items",
+          "hoverEffect": "Color change or underline"
+        }
+      },
+
+      "imagery": {
+        "style": "Mix of photography and illustrations",
+        "treatment": "Natural, bright, outdoors-focused",
+        "shapes": "Circular crops for avatars, rounded rectangles for content",
+        "icons": {
+          "style": "Line icons or simple filled",
+          "size": "20-24px standard",
+          "strokeWidth": "1.5-2px",
+          "usage": "Minimal, purposeful placement"
+        }
+      },
+
+      "accordion": {
+        "trigger": {
+          "padding": "16-20px",
+          "background": "White or light tint",
+          "borderRadius": "8-12px",
+          "border": "1px subtle border",
+          "icon": "+ or chevron on right"
+        },
+        "content": {
+          "padding": "16-24px",
+          "animation": "Smooth expand/collapse"
+        }
+      },
+
+      "tags": {
+        "style": "Pill-shaped",
+        "padding": "6-8px horizontal, 4-6px vertical",
+        "fontSize": "12-14px",
+        "fontWeight": "500",
+        "background": "Tinted color or solid green",
+        "borderRadius": "pill"
+      }
+    },
+
+    "layout": {
+      "patterns": {
+        "hero": {
+          "height": "60-80vh or 500-700px",
+          "content": "Centered or left-aligned",
+          "background": "Solid color, gradient, or image",
+          "overlay": "Optional dark overlay for text readability"
+        },
+        "grid": {
+          "columns": "1-4 columns responsive",
+          "gap": "24-32px",
+          "breakpoints": {
+            "mobile": "1 column",
+            "tablet": "2 columns",
+            "desktop": "3-4 columns"
+          }
+        },
+        "asymmetric": {
+          "usage": "Mix of different sized cards/elements",
+          "principle": "Visual interest through varied sizing"
+        },
+        "whitespace": {
+          "philosophy": "Generous, breathing room",
+          "sectionSpacing": "80-120px between sections"
+        }
+      }
+    },
+
+    "animations": {
+      "transitions": {
+        "duration": "200-300ms",
+        "easing": "ease-out or cubic-bezier(0.4, 0, 0.2, 1)",
+        "properties": ["opacity", "transform", "background-color", "box-shadow"]
+      },
+      "hover": {
+        "scale": "1.02-1.05",
+        "lift": "translateY(-2px to -4px)",
+        "shadow": "Increase shadow intensity"
+      },
+      "loading": {
+        "style": "Subtle pulse or skeleton screens",
+        "color": "Light gray tints"
+      }
+    },
+
+    "accessibility": {
+      "colorContrast": "WCAG AA minimum (4.5:1 for text)",
+      "focusStates": "Visible outline or ring, 2-3px offset",
+      "interactiveSize": "Minimum 44x44px touch targets",
+      "motion": "Respect prefers-reduced-motion"
+    },
+
+    "visualHierarchy": {
+      "principles": [
+        "Large, bold headlines for primary messaging",
+        "Generous whitespace to separate sections",
+        "Color used strategically for CTAs and emphasis",
+        "Size and weight variation for importance",
+        "Consistent alignment (left or center)"
+      ]
+    },
+
+    "brandPersonality": {
+      "keywords": ["Clean", "Modern", "Organic", "Trustworthy", "Hopeful", "Accessible", "Professional"],
+      "toneOfDesign": "Warm, inviting, nature-inspired but professional",
+      "avoidances": ["Overly corporate", "Cluttered", "Dark/heavy", "Overly playful"]
+    },
+
+    "responsiveDesign": {
+      "breakpoints": {
+        "mobile": "320-767px",
+        "tablet": "768-1023px",
+        "desktop": "1024-1439px",
+        "wide": "1440px+"
+      },
+      "approach": "Mobile-first",
+      "adaptations": {
+        "navigation": "Hamburger menu on mobile",
+        "grid": "Single column on mobile, multi-column on larger",
+        "typography": "Scale down hero text for mobile",
+        "spacing": "Reduce padding/margins on mobile"
+      }
+    },
+
+    "dataVisualization": {
+      "maps": {
+        "style": "Dot-based or minimal geographic",
+        "colors": "Green tints for eco-theme",
+        "background": "Dark navy or light gray"
+      },
+      "charts": {
+        "colors": "Green palette with accent colors",
+        "style": "Clean, minimal axes and labels",
+        "tooltips": "Card-style with rounded corners"
+      }
+    },
+
+    "contentPatterns": {
+      "callToAction": {
+        "placement": "End of sections, hero areas",
+        "style": "Clear, action-oriented",
+        "visual": "Primary button with icon or arrow"
+      },
+      "imageText": {
+        "ratio": "50/50 or 60/40",
+        "layout": "Alternating left/right",
+        "spacing": "24-48px between image and text"
+      },
+      "testimonials": {
+        "style": "Card-based with quotes",
+        "imagery": "Circular or rounded profile photos",
+        "attribution": "Clear name and role/location"
+      }
+    }
+  }
+}

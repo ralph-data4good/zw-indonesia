@@ -2,52 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Eco Design System Global Styles */
+
 @layer base {
   :root {
-    --zwa-bg: #0b1b13;
-    --zwa-ink: #0f1720;
-    --zwa-surface: #12281d;
-    --zwa-primary: #1abc9c;
-    --zwa-primary-ink: #0e3b33;
-    --zwa-accent: #7bd389;
-    --zwa-muted: #94a3b8;
-    --zwa-border: #1f3b2d;
+    /* Eco Design System Colors */
+    --eco-vibrant: #4A7C59;
+    --eco-accent: #E8B84D;
+    --eco-dark: #2C3E50;
+    --eco-neutral: #1A1A1A;
+    --eco-bg: #FEFFFE;
+    --eco-soft: #E8F0E8;
   }
 
   * {
-    @apply border-zwa-border;
+    @apply border-eco-neutral-300;
   }
 
   body {
-    @apply bg-white text-zwa-ink font-sans antialiased;
+    @apply bg-eco-neutral-50 text-eco-neutral-900 font-sans antialiased;
+    font-size: 16px;
+    line-height: 1.6;
   }
 
+  /* Typography Scale from Eco Design System */
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+    @apply text-h1 font-bold tracking-tight text-eco-neutral-900;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl font-bold tracking-tight;
+    @apply text-h2 font-semibold tracking-tight text-eco-neutral-900;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl font-semibold tracking-tight;
+    @apply text-2xl md:text-3xl font-semibold tracking-tight text-eco-neutral-900;
   }
 
   h4 {
-    @apply text-xl md:text-2xl font-semibold;
+    @apply text-xl md:text-2xl font-semibold text-eco-neutral-900;
   }
 
   h5 {
-    @apply text-lg md:text-xl font-semibold;
+    @apply text-lg md:text-xl font-semibold text-eco-neutral-900;
   }
 
   h6 {
-    @apply text-base md:text-lg font-semibold;
+    @apply text-base md:text-lg font-semibold text-eco-neutral-900;
   }
 
   p {
-    @apply text-base leading-relaxed;
+    @apply text-base leading-relaxed text-eco-neutral-700;
   }
 
   a {
@@ -58,106 +62,142 @@
     @apply transition-all duration-200;
   }
 
-  /* Focus styles for accessibility */
+  /* Focus styles for accessibility (WCAG AA) */
   *:focus-visible {
-    @apply outline-none ring-2 ring-zwa-primary ring-offset-2 ring-offset-white;
+    @apply outline-none ring-2 ring-eco-vibrant-500 ring-offset-2 ring-offset-white;
   }
 
-  /* Skip to content link */
-  .skip-to-content {
-    @apply absolute -top-12 left-4 z-50 bg-zwa-primary text-white px-4 py-2 rounded-lg;
-    @apply focus:top-4 transition-all;
-  }
-}
-
-@layer components {
-  /* Button variants */
-  .btn {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-medium;
-    @apply transition-all duration-200 focus-visible:outline-none focus-visible:ring-2;
-  }
-
-  .btn-primary {
-    @apply bg-zwa-primary text-white hover:bg-zwa-primary/90 focus-visible:ring-zwa-primary;
-  }
-
-  .btn-secondary {
-    @apply bg-zwa-accent text-zwa-ink hover:bg-zwa-accent/90 focus-visible:ring-zwa-accent;
-  }
-
-  .btn-ghost {
-    @apply border-2 border-zwa-primary text-zwa-primary hover:bg-zwa-primary/10 focus-visible:ring-zwa-primary;
-  }
-
-  .btn-outline {
-    @apply border-2 border-zwa-border text-zwa-ink hover:border-zwa-primary hover:text-zwa-primary focus-visible:ring-zwa-primary;
-  }
-
-  /* Card styles */
-  .card {
-    @apply bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200;
-  }
-
-  .card-dark {
-    @apply bg-zwa-surface rounded-2xl border border-zwa-border shadow-sm hover:shadow-md transition-shadow duration-200;
-  }
-
-  /* Input styles */
-  .input {
-    @apply w-full px-4 py-2.5 rounded-xl border border-gray-300 bg-white text-zwa-ink;
-    @apply focus:border-zwa-primary focus:ring-2 focus:ring-zwa-primary/20;
-    @apply placeholder:text-zwa-muted transition-colors;
-  }
-
-  /* Chip/badge styles */
-  .chip {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium;
-    @apply transition-colors cursor-pointer;
-  }
-
-  .chip-default {
-    @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
-  }
-
-  .chip-active {
-    @apply bg-zwa-primary text-white hover:bg-zwa-primary/90;
-  }
-
-  .chip-accent {
-    @apply bg-zwa-accent/20 text-zwa-accent;
-  }
-
-  /* Container */
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-}
-
-@layer utilities {
-  /* Reduced motion support */
+  /* Respect reduced motion preference */
   @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
   }
 
-  /* Text balance for headings */
+  /* Skip to content link */
+  .skip-to-content {
+    @apply absolute -top-12 left-4 z-50 bg-eco-vibrant-500 text-white px-4 py-2 rounded-lg;
+    @apply focus:top-4 transition-all;
+  }
+}
+
+@layer components {
+  /* Buttons - Eco Design System */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-pill font-medium text-base;
+    @apply transition-all duration-200 focus-visible:outline-none focus-visible:ring-2;
+    min-height: 44px; /* Accessibility - minimum touch target */
+  }
+
+  .btn-primary {
+    @apply bg-eco-vibrant-500 text-white hover:bg-eco-vibrant-700;
+    @apply shadow-eco-sm hover:shadow-eco-md;
+    font-weight: 600;
+  }
+
+  .btn-secondary {
+    @apply bg-white border-2 border-eco-vibrant-500 text-eco-vibrant-700 hover:bg-eco-soft-100;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-eco-vibrant-700 hover:bg-eco-soft-100;
+  }
+
+  /* Cards - Eco Design System */
+  .card {
+    @apply bg-white rounded-xl p-6 shadow-eco-sm;
+    @apply transition-all duration-200;
+    border: 1px solid theme('colors.eco-neutral.300');
+  }
+
+  .card-hover {
+    @apply card hover:shadow-eco-lg hover:-translate-y-1;
+  }
+
+  .card-organic {
+    @apply card rounded-2xl;
+  }
+
+  .card-dark {
+    @apply bg-eco-dark-600 text-white rounded-xl p-6 border border-white/10;
+  }
+
+  /* Tags/Chips - Eco Design System */
+  .chip {
+    @apply inline-flex items-center px-3 py-1.5 rounded-pill text-sm font-medium;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-pill text-xs font-semibold;
+  }
+
+  .badge-primary {
+    @apply bg-eco-vibrant-500 text-white;
+  }
+
+  .badge-accent {
+    @apply bg-eco-accent-500 text-eco-neutral-900;
+  }
+
+  .badge-soft {
+    @apply bg-eco-soft-200 text-eco-vibrant-700;
+  }
+
+  /* Container - Eco Design System */
+  .container-custom {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1280px;
+  }
+
+  .content-custom {
+    @apply mx-auto;
+    max-width: 1120px;
+  }
+
+  /* Section spacing - Eco Design System */
+  .section {
+    @apply py-section;
+  }
+
+  /* Hero gradient */
+  .gradient-overlay {
+    position: relative;
+  }
+
+  .gradient-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  /* Text utilities */
   .text-balance {
     text-wrap: balance;
   }
 
-  /* Gradient overlays */
-  .gradient-overlay {
-    @apply relative;
+  .text-pretty {
+    text-wrap: pretty;
   }
 
-  .gradient-overlay::after {
-    @apply absolute inset-0 bg-gradient-to-t from-zwa-ink/80 via-zwa-ink/40 to-transparent;
-    content: '';
+  /* Eco-specific utilities */
+  .bg-eco-gradient {
+    background: linear-gradient(135deg, #4A7C59 0%, #3A6C49 100%);
+  }
+
+  .bg-eco-soft-gradient {
+    background: linear-gradient(135deg, #A8C5A3 0%, #9BB89B 100%);
+  }
+
+  /* Organic shadows */
+  .shadow-organic {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06), 0 3px 8px rgba(0,0,0,0.04);
   }
 }
-
