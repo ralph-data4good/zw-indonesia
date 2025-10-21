@@ -4,7 +4,7 @@ import Hero from '../components/Hero';
 import Section from '../components/Section';
 import ResourceCard from '../components/ResourceCard';
 import CampaignCard from '../components/CampaignCard';
-import EventCard from '../components/EventCard';
+import EventsCarousel from '../components/EventsCarousel';
 import Spotlight from '../components/Spotlight';
 import { useTranslation } from '../lib/i18n';
 import { useCampaigns, useResources, useEvents, useOrganizations, useInitiatives } from '../lib/useMockData';
@@ -35,13 +35,14 @@ export default function Home() {
 
   return (
     <div>
+      {/* 1. Hero */}
       <Hero 
         title={t('home.hero.title')}
         subtitle={t('home.hero.subtitle')}
         showLinks={true}
       />
 
-      {/* Featured Campaigns */}
+      {/* 2. Take Action - Featured Campaigns */}
       {featuredCampaigns.length > 0 && (
         <Section
           eyebrow="Take Action"
@@ -53,25 +54,76 @@ export default function Home() {
               <CampaignCard key={campaign.id} campaign={campaign} />
             ))}
           </div>
-          <div className="text-center">
-            <Link to="/campaigns" className="inline-flex items-center gap-2 text-zwa-primary font-semibold hover:text-zwa-primary/80 transition-colors">
-              <span>{t('common.viewAll')}</span>
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
-            </Link>
-          </div>
           {(loadingCampaigns || campaignsError) && (
             <p className="text-xs text-gray-500 mt-4">{loadingCampaigns ? 'Loading…' : `Error: ${campaignsError}`}</p>
           )}
         </Section>
       )}
 
-      {/* Featured Resources */}
+      {/* 3. Community Spotlight - Waste Picker Groups (with photos) */}
+      {initiatives && initiatives.length > 0 && (
+        <Section
+          eyebrow="Community Spotlight"
+          title="Waste Picker Groups & Initiatives"
+          description="On-the-ground, human-interest stories from waste pickers and community groups"
+          centered={false}
+          className="bg-gray-50"
+        >
+          <Spotlight items={initiatives.slice(0, 3)} type="initiative" />
+        </Section>
+      )}
+
+      {/* 4. Join Us - Upcoming Events (Carousel) */}
+      {upcomingEvents.length > 0 && (
+        <Section
+          eyebrow="Join Us"
+          title={t('home.featured.events')}
+          description="Workshops, conferences, clean-ups, and gatherings advancing zero waste in Indonesia"
+          centered={false}
+        >
+          <EventsCarousel events={upcomingEvents} />
+          {(loadingEvents || eventsError) && (
+            <p className="text-xs text-gray-500 mt-4">{loadingEvents ? 'Loading…' : `Error: ${eventsError}`}</p>
+          )}
+        </Section>
+      )}
+
+      {/* 5. Community Impact - Grassroots Initiatives (text-based) */}
+      {initiatives && initiatives.length > 0 && (
+        <Section
+          eyebrow="Community Impact"
+          title="Grassroots Initiatives"
+          description="Innovative solutions and community-led projects transforming waste management"
+          centered={false}
+          className="bg-gray-50"
+        >
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {initiatives.slice(0, 3).map((initiative) => (
+              <div key={initiative.id} className="bg-white rounded-lg p-6 border border-gray-200 hover:border-zwa-primary transition-colors">
+                <h4 className="font-bold text-lg text-zwa-ink mb-2">{initiative.title}</h4>
+                <p className="text-sm text-gray-600 mb-3">{initiative.summary}</p>
+                {initiative.topics && initiative.topics.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {initiative.topics.map((topic) => (
+                      <span key={topic} className="chip bg-zwa-surface text-zwa-ink text-xs">
+                        {topic}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {/* 6. Learn - Featured Resources */}
       {featuredResources.length > 0 && (
         <Section
           eyebrow="Learn"
           title={t('home.featured.resources')}
+          description="Reports, guides, toolkits, and research supporting zero waste initiatives"
           centered={false}
-          className="bg-gray-50"
         >
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             {featuredResources.map((resource) => (
@@ -90,50 +142,14 @@ export default function Home() {
         </Section>
       )}
 
-      {/* Upcoming Events */}
-      {upcomingEvents.length > 0 && (
-        <Section
-          eyebrow="Join Us"
-          title={t('home.featured.events')}
-          centered={false}
-        >
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {upcomingEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
-          </div>
-          <div className="text-center">
-            <Link to="/events" className="inline-flex items-center gap-2 text-zwa-primary font-semibold hover:text-zwa-primary/80 transition-colors">
-              <span>{t('common.viewAll')}</span>
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
-            </Link>
-          </div>
-          {(loadingEvents || eventsError) && (
-            <p className="text-xs text-gray-500 mt-4">{loadingEvents ? 'Loading…' : `Error: ${eventsError}`}</p>
-          )}
-        </Section>
-      )}
-
-      {/* Spotlight - Initiatives */}
-      {initiatives && initiatives.length > 0 && (
-        <Section
-          eyebrow="Community Impact"
-          title="Grassroots Initiatives"
-          description="On-the-ground, human-interest initiatives led by waste pickers and community groups"
-          centered={false}
-          className="bg-gray-50"
-        >
-          <Spotlight items={initiatives.slice(0, 3)} type="initiative" />
-        </Section>
-      )}
-
-      {/* Spotlight - Organizations */}
+      {/* 7. Leadership - Partner Organizations */}
       {organizations && organizations.length > 0 && (
         <Section
           eyebrow="Leadership"
           title="Partner Organizations"
           description="Established organizations driving systemic change in Indonesia's zero waste movement"
           centered={false}
+          className="bg-gray-50"
         >
           <Spotlight items={organizations.filter(org => org.status_badge === 'verified').slice(0, 3)} type="organization" />
         </Section>

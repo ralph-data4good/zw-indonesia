@@ -39,17 +39,40 @@ export default function Spotlight({ items = [], type = 'mixed' }) {
     setCurrentIndex((prev) => (prev + 1) % formattedItems.length);
   };
 
+  const showPhoto = type === 'initiative'; // Show photo for waste picker initiatives
+
   return (
-    <div className="relative bg-gradient-to-br from-zwa-primary-ink to-zwa-surface rounded-2xl p-8 text-white">
-      <div className="max-w-2xl">
-        <div className="flex items-center gap-2 mb-4">
-          <span className="chip bg-zwa-primary text-white text-xs">
-            {current.type === 'organization' ? 'Organization' : 'Initiative'}
-          </span>
-          {current.data.status_badge === 'verified' && (
-            <span className="chip bg-zwa-accent text-zwa-ink text-xs">Verified</span>
-          )}
-        </div>
+    <div className="relative bg-gradient-to-br from-zwa-primary-ink to-zwa-surface rounded-2xl overflow-hidden">
+      <div className={cx("grid", showPhoto ? "md:grid-cols-2 gap-0" : "grid-cols-1")}>
+        {/* Photo Section (for initiatives) */}
+        {showPhoto && (
+          <div className="relative h-64 md:h-auto bg-gradient-to-br from-zwa-accent/30 to-zwa-primary/30">
+            {/* Placeholder for photo - in real app, this would be current.data.image */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-full h-full bg-cover bg-center opacity-40" style={{
+                backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)`,
+                backgroundSize: '20px 20px'
+              }} />
+              <div className="absolute inset-0 flex items-center justify-center text-white/50">
+                {/* Icon placeholder - can be replaced with actual images */}
+                <svg className="w-24 h-24" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Content Section */}
+        <div className="p-8">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="chip bg-zwa-primary text-white text-xs">
+              {current.type === 'organization' ? 'Organization' : 'Initiative'}
+            </span>
+            {current.data.status_badge === 'verified' && (
+              <span className="chip bg-zwa-accent text-zwa-ink text-xs">Verified</span>
+            )}
+          </div>
 
         {current.type === 'organization' ? (
           <>
@@ -88,6 +111,7 @@ export default function Spotlight({ items = [], type = 'mixed' }) {
             )}
           </>
         )}
+        </div>
       </div>
 
       {formattedItems.length > 1 && (

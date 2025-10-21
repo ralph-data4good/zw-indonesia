@@ -9,9 +9,9 @@ export default function Header() {
   const { t } = useTranslation();
 
   const navItems = [
-    { path: '/', label: t('nav.home') },
     { path: '/map', label: t('nav.map') },
     { path: '/resources', label: t('nav.resources') },
+    { path: '/events', label: t('nav.events') },
     { path: '/calculator', label: t('nav.calculator') },
     { path: '/about', label: t('nav.about') },
   ];
@@ -23,11 +23,16 @@ export default function Header() {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-2 font-semibold text-lg text-zwa-ink hover:text-zwa-primary transition-colors"
-            aria-label="Zero Waste Asia Home"
+            className="flex items-center gap-2 font-semibold text-lg text-zwa-ink hover:text-zwa-primary transition-colors group"
+            aria-label="Zero Waste Asia Indonesia Home"
           >
-            <Leaf className="w-5 h-5 text-zwa-primary" aria-hidden="true" />
-            <span>Zero Waste Asia</span>
+            <Leaf className="w-5 h-5 text-zwa-primary group-hover:scale-110 transition-transform" aria-hidden="true" />
+            <div className="relative">
+              <span>Zero Waste Asia</span>
+              <span className="absolute -bottom-1 -right-16 text-[10px] font-medium px-2 py-0.5 bg-zwa-primary text-white rounded-full">
+                Indonesia
+              </span>
+            </div>
           </Link>
 
           {/* Navigation */}
