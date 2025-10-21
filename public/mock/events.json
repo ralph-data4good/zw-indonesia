@@ -75,6 +75,38 @@
     "venue": "Multiple locations",
     "featured": true,
     "rsvp": null
+  },
+  {
+    "id": "evt-008",
+    "title": "Zero Waste Business Summit",
+    "description": "Two-day conference showcasing successful zero waste business models and circular economy innovations",
+    "start": "2024-11-20",
+    "end": "2024-11-21",
+    "city": "Jakarta",
+    "venue": "Jakarta International Expo",
+    "featured": true,
+    "rsvp": "https://example.com/business-summit-rsvp"
+  },
+  {
+    "id": "evt-009",
+    "title": "Beach Cleanup & Marine Debris Workshop - Bali",
+    "description": "Morning cleanup followed by afternoon session on monitoring protocols and data collection",
+    "start": "2024-11-09",
+    "end": "2024-11-09",
+    "city": "Sanur",
+    "venue": "Sanur Beach",
+    "featured": false,
+    "rsvp": "https://example.com/beach-cleanup-bali"
+  },
+  {
+    "id": "evt-010",
+    "title": "Refill Station Network Launch - Surabaya",
+    "description": "Grand opening of 15 new refill stations across Surabaya with demos and special promotions",
+    "start": "2024-11-30",
+    "end": "2024-11-30",
+    "city": "Surabaya",
+    "venue": "Various locations",
+    "featured": true,
+    "rsvp": "https://example.com/refill-launch-surabaya"
   }
 ]
-

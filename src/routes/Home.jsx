@@ -11,16 +11,25 @@ import { useCampaigns, useResources, useEvents } from '../lib/useMockData';
 
 export default function Home() {
   const { t } = useTranslation();
-  const { data: campaigns } = useCampaigns();
-  const { data: resources } = useResources();
-  const { data: events } = useEvents();
+  const { data: campaigns, loading: loadingCampaigns, error: campaignsError } = useCampaigns();
+  const { data: resources, loading: loadingResources, error: resourcesError } = useResources();
+  const { data: events, loading: loadingEvents, error: eventsError } = useEvents();
 
-  const featuredCampaigns = campaigns?.filter(c => c.featured).slice(0, 3) || [];
-  const featuredResources = resources?.filter(r => r.featured).slice(0, 6) || [];
-  const upcomingEvents = events
-    ?.filter(e => new Date(e.start) > new Date())
+  const featuredCampaignsRaw = (campaigns || []).filter((c) => c.featured);
+  const featuredResourcesRaw = (resources || []).filter((r) => r.featured);
+
+  const featuredCampaigns = (featuredCampaignsRaw.length > 0
+    ? featuredCampaignsRaw
+    : (campaigns || [])).slice(0, 3);
+
+  const featuredResources = (featuredResourcesRaw.length > 0
+    ? featuredResourcesRaw
+    : (resources || [])).slice(0, 6);
+
+  const upcomingEvents = (events || [])
+    .filter((e) => new Date(e.start) > new Date())
     .sort((a, b) => new Date(a.start) - new Date(b.start))
-    .slice(0, 3) || [];
+    .slice(0, 3);
 
   return (
     <div>
@@ -48,6 +57,9 @@ export default function Home() {
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
+          {(loadingCampaigns || campaignsError) && (
+            <p className="text-xs text-gray-500 mt-4">{loadingCampaigns ? 'Loading…' : `Error: ${campaignsError}`}</p>
+          )}
         </Section>
       )}
 
@@ -70,6 +82,9 @@ export default function Home() {
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
+          {(loadingResources || resourcesError) && (
+            <p className="text-xs text-gray-500 mt-4">{loadingResources ? 'Loading…' : `Error: ${resourcesError}`}</p>
+          )}
         </Section>
       )}
 
@@ -91,6 +106,9 @@ export default function Home() {
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
+          {(loadingEvents || eventsError) && (
+            <p className="text-xs text-gray-500 mt-4">{loadingEvents ? 'Loading…' : `Error: ${eventsError}`}</p>
+          )}
         </Section>
       )}
 

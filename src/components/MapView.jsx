@@ -5,18 +5,22 @@ export default function MapView({ features = [], onBoundsChange }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const markers = useRef([]);
-  const [maplibre, setMaplibre] = useState(null);
+  const [maplibreModule, setMaplibreModule] = useState(null);
 
-  // Dynamically import maplibre-gl
+  // Dynamically import maplibre-gl (module namespace)
   useEffect(() => {
+    let cancelled = false;
     import('maplibre-gl').then((module) => {
-      setMaplibre(module.default);
+      if (!cancelled) setMaplibreModule(module);
+    }).catch(() => {
+      // ignore for now; loader will show
     });
+    return () => { cancelled = true; };
   }, []);
 
   // Initialize map
   useEffect(() => {
-    if (!maplibre || map.current || !mapContainer.current) return;
+    if (!maplibreModule || map.current || !mapContainer.current) return;
 
     // Indonesia bounds
     const indonesiaBounds = [
@@ -24,14 +28,16 @@ export default function MapView({ features = [], onBoundsChange }) {
       [141, 6]   // Northeast coordinates
     ];
 
-    map.current = new maplibre.Map({
+    const { Map, NavigationControl } = maplibreModule;
+
+    map.current = new Map({
       container: mapContainer.current,
       style: 'https://demotiles.maplibre.org/style.json', // Free tile service
       bounds: indonesiaBounds,
       fitBoundsOptions: { padding: 40 }
     });
 
-    map.current.addControl(new maplibre.NavigationControl(), 'top-right');
+    map.current.addControl(new NavigationControl(), 'top-right');
 
     map.current.on('moveend', () => {
       if (onBoundsChange) {
@@ -58,15 +64,17 @@ export default function MapView({ features = [], onBoundsChange }) {
         map.current = null;
       }
     };
-  }, [maplibre, onBoundsChange]);
+  }, [maplibreModule, onBoundsChange]);
 
   // Update markers when features change
   useEffect(() => {
-    if (!map.current || !maplibre) return;
+    if (!map.current || !maplibreModule) return;
 
     // Clear existing markers
     markers.current.forEach(marker => marker.remove());
     markers.current = [];
+
+    const { Marker, Popup } = maplibreModule;
 
     // Add new markers
     features.forEach((feature) => {
@@ -101,7 +109,7 @@ export default function MapView({ features = [], onBoundsChange }) {
         <div style="min-width: 200px;">
           <h4 style="font-weight: 600; margin-bottom: 4px; color: #0f1720;">${feature.name}</h4>
           <p style="font-size: 13px; color: #64748b; margin-bottom: 8px;">${feature.entry_type || feature.type || ''}</p>
-          ${feature.status_badge ? `<span style="display: inline-block; padding: 2px 8px; background: #7bd389; color: #0e3b33; border-radius: 12px; font-size: 11px; font-weight: 500;">${feature.status_badge}</span>` : ''}
+          ${feature.status_badge ? `<span style=\"display: inline-block; padding: 2px 8px; background: #7bd389; color: #0e3b33; border-radius: 12px; font-size: 11px; font-weight: 500;\">${feature.status_badge}</span>` : ''}
           <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #e5e7eb;">
             <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 4px; color: #1abc9c; text-decoration: none; font-size: 13px; font-weight: 500;">
               <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"></circle><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"></path></svg>
@@ -111,18 +119,18 @@ export default function MapView({ features = [], onBoundsChange }) {
         </div>
       `;
 
-      const popup = new maplibre.Popup({ offset: 25 }).setHTML(popupContent);
+      const popup = new Popup({ offset: 25 }).setHTML(popupContent);
 
-      const marker = new maplibre.Marker({ element: el })
+      const marker = new Marker({ element: el })
         .setLngLat([lng, lat])
         .setPopup(popup)
         .addTo(map.current);
 
       markers.current.push(marker);
     });
-  }, [features, maplibre]);
+  }, [features, maplibreModule]);
 
-  if (!maplibre) {
+  if (!maplibreModule) {
     return (
       <div className="w-full h-full flex items-center justify-center bg-gray-100">
         <div className="text-center">

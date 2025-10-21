@@ -1,4 +1,5 @@
 // Minimal dictionary-based i18n for EN/ID
+import React from 'react';
 
 const translations = {
   en: {
@@ -240,6 +241,4 @@ export function useTranslation() {
   return { t: translate, lang, setLang: setLanguage };
 }
 
-// Note: We import React dynamically to avoid circular dependencies
-import React from 'react';
 
