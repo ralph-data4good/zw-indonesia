@@ -82,6 +82,15 @@ export default function Home() {
           centered={false}
         >
           <EventsCarousel events={upcomingEvents} />
+          <div className="text-center mt-10">
+            <Link 
+              to="/events" 
+              className="inline-flex items-center gap-2 btn btn-primary text-base px-8 py-3"
+            >
+              <span>See More Events</span>
+              <ArrowRight className="w-5 h-5" aria-hidden="true" />
+            </Link>
+          </div>
           {(loadingEvents || eventsError) && (
             <p className="text-xs text-gray-500 mt-4">{loadingEvents ? 'Loading…' : `Error: ${eventsError}`}</p>
           )}
