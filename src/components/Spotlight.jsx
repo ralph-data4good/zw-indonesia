@@ -1,48 +1,42 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink, MapPin } from 'lucide-react';
 import { cx } from '../lib/utils';
-import { useOrganizations, useInitiatives } from '../lib/useMockData';
 
-export default function Spotlight() {
-  const { data: organizations } = useOrganizations();
-  const { data: initiatives } = useInitiatives();
+export default function Spotlight({ items = [], type = 'mixed' }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
 
-  // Combine featured organizations and initiatives
-  const items = [
-    ...(organizations?.filter(org => org.status_badge === 'verified').slice(0, 2) || []).map(org => ({
-      type: 'organization',
-      data: org
-    })),
-    ...(initiatives?.slice(0, 2) || []).map(init => ({
-      type: 'initiative',
-      data: init
-    }))
-  ];
+  // Format items with type if not already formatted
+  const formattedItems = items.map(item => {
+    if (item.type && item.data) return item; // Already formatted
+    return {
+      type: type === 'mixed' ? (item.entry_type || item.type || 'organization') : type,
+      data: item
+    };
+  });
 
   useEffect(() => {
-    if (!autoPlay || items.length <= 1) return;
+    if (!autoPlay || formattedItems.length <= 1) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % items.length);
+      setCurrentIndex((prev) => (prev + 1) % formattedItems.length);
     }, 8000);
 
     return () => clearInterval(interval);
-  }, [autoPlay, items.length]);
+  }, [autoPlay, formattedItems.length]);
 
-  if (!items.length) return null;
+  if (!formattedItems.length) return null;
 
-  const current = items[currentIndex];
+  const current = formattedItems[currentIndex];
 
   const goToPrevious = () => {
     setAutoPlay(false);
-    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
+    setCurrentIndex((prev) => (prev - 1 + formattedItems.length) % formattedItems.length);
   };
 
   const goToNext = () => {
     setAutoPlay(false);
-    setCurrentIndex((prev) => (prev + 1) % items.length);
+    setCurrentIndex((prev) => (prev + 1) % formattedItems.length);
   };
 
   return (
@@ -96,7 +90,7 @@ export default function Spotlight() {
         )}
       </div>
 
-      {items.length > 1 && (
+      {formattedItems.length > 1 && (
         <>
           <div className="absolute bottom-8 right-8 flex gap-2">
             <button
@@ -116,7 +110,7 @@ export default function Spotlight() {
           </div>
 
           <div className="absolute top-8 right-8 flex gap-1">
-            {items.map((_, index) => (
+            {formattedItems.map((_, index) => (
               <button
                 key={index}
                 onClick={() => {

@@ -12,8 +12,6 @@ export default function Header() {
     { path: '/', label: t('nav.home') },
     { path: '/map', label: t('nav.map') },
     { path: '/resources', label: t('nav.resources') },
-    { path: '/campaigns', label: t('nav.campaigns') },
-    { path: '/events', label: t('nav.events') },
     { path: '/calculator', label: t('nav.calculator') },
     { path: '/about', label: t('nav.about') },
   ];

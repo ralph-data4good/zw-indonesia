@@ -7,13 +7,15 @@ import CampaignCard from '../components/CampaignCard';
 import EventCard from '../components/EventCard';
 import Spotlight from '../components/Spotlight';
 import { useTranslation } from '../lib/i18n';
-import { useCampaigns, useResources, useEvents } from '../lib/useMockData';
+import { useCampaigns, useResources, useEvents, useOrganizations, useInitiatives } from '../lib/useMockData';
 
 export default function Home() {
   const { t } = useTranslation();
   const { data: campaigns, loading: loadingCampaigns, error: campaignsError } = useCampaigns();
   const { data: resources, loading: loadingResources, error: resourcesError } = useResources();
   const { data: events, loading: loadingEvents, error: eventsError } = useEvents();
+  const { data: organizations } = useOrganizations();
+  const { data: initiatives } = useInitiatives();
 
   const featuredCampaignsRaw = (campaigns || []).filter((c) => c.featured);
   const featuredResourcesRaw = (resources || []).filter((r) => r.featured);
@@ -112,16 +114,30 @@ export default function Home() {
         </Section>
       )}
 
-      {/* Spotlight */}
-      <Section
-        eyebrow="Community"
-        title={t('home.spotlight.title')}
-        description="Highlighting organizations and initiatives leading the zero waste movement in Indonesia"
-        centered={false}
-        className="bg-gray-50"
-      >
-        <Spotlight />
-      </Section>
+      {/* Spotlight - Initiatives */}
+      {initiatives && initiatives.length > 0 && (
+        <Section
+          eyebrow="Community Impact"
+          title="Grassroots Initiatives"
+          description="On-the-ground, human-interest initiatives led by waste pickers and community groups"
+          centered={false}
+          className="bg-gray-50"
+        >
+          <Spotlight items={initiatives.slice(0, 3)} type="initiative" />
+        </Section>
+      )}
+
+      {/* Spotlight - Organizations */}
+      {organizations && organizations.length > 0 && (
+        <Section
+          eyebrow="Leadership"
+          title="Partner Organizations"
+          description="Established organizations driving systemic change in Indonesia's zero waste movement"
+          centered={false}
+        >
+          <Spotlight items={organizations.filter(org => org.status_badge === 'verified').slice(0, 3)} type="organization" />
+        </Section>
+      )}
 
       {/* CTA Row */}
       <Section className="bg-zwa-ink" dark>

@@ -70,6 +70,8 @@ export default function MapView({ features = [], onBoundsChange }) {
   useEffect(() => {
     if (!map.current || !maplibreModule) return;
 
+    console.log('[MapView] Updating markers. Features count:', features.length);
+
     // Clear existing markers
     markers.current.forEach(marker => marker.remove());
     markers.current = [];

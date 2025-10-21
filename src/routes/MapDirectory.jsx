@@ -56,16 +56,17 @@ export default function MapDirectory() {
       filtered = filtered.filter(entry => entry.status_badge === 'verified');
     }
 
-    // Apply map bounds filter
-    if (mapBounds) {
-      filtered = filtered.filter(entry => {
-        if (!entry.coords || entry.coords.length !== 2) return false;
-        return isInBounds(entry.coords, mapBounds);
-      });
-    }
+    // Apply map bounds filter (commented out initially to show all markers)
+    // if (mapBounds) {
+    //   filtered = filtered.filter(entry => {
+    //     if (!entry.coords || entry.coords.length !== 2) return false;
+    //     return isInBounds(entry.coords, mapBounds);
+    //   });
+    // }
 
+    console.log('[MapDirectory] Filtered entries:', filtered.length);
     setFilteredEntries(filtered);
-  }, [directory, searchValue, selectedFilters, verifiedOnly, mapBounds]);
+  }, [directory, searchValue, selectedFilters, verifiedOnly]);
 
   const handleFilterToggle = (key, value) => {
     setSelectedFilters(prev => {
