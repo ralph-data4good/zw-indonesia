@@ -2,9 +2,14 @@ import { useState, useEffect } from 'react';
 
 // Resolve path relative to Vite base (works on GitHub Pages subpath)
 function resolveUrl(path) {
-  if (/^https?:\/\//i.test(path)) return path;
-  const trimmed = path.replace(/^\//, '');
-  return new URL(trimmed, import.meta.env.BASE_URL).toString();
+  // Get base URL from Vite environment variable
+  const base = import.meta.env.BASE_URL || '/';
+  // Ensure base ends with slash
+  const baseWithSlash = base.endsWith('/') ? base : base + '/';
+  // Remove leading slash from path if present
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  // Combine base and path
+  return baseWithSlash + cleanPath;
 }
 
 // Generic JSON fetcher hook
@@ -19,16 +24,20 @@ function useJson(path) {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch(resolveUrl(path));
+        const url = resolveUrl(path);
+        console.log(`[useMockData] Fetching: ${url}`); // Debug log
+        const response = await fetch(url);
         if (!response.ok) {
-          throw new Error(`Failed to fetch ${path}`);
+          throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
         }
         const json = await response.json();
+        console.log(`[useMockData] Loaded ${path}:`, json?.length || Object.keys(json || {}).length, 'items'); // Debug log
         if (isMounted) {
           setData(json);
           setError(null);
         }
       } catch (err) {
+        console.error(`[useMockData] Error loading ${path}:`, err); // Debug log
         if (isMounted) {
           setError(err.message);
           setData(null);
