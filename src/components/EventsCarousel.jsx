@@ -48,21 +48,21 @@ export default function EventsCarousel({ events = [] }) {
                 )}
               >
                 {/* Event Image Placeholder */}
-                <div className="h-48 bg-gradient-to-br from-zwa-primary to-zwa-surface relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-20" style={{
-                    backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
-                    backgroundSize: '12px 12px'
+                <div className="h-52 bg-gradient-to-br from-zwa-primary to-[#0e3b33] relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-15" style={{
+                    backgroundImage: `radial-gradient(circle, white 1.5px, transparent 1.5px)`,
+                    backgroundSize: '16px 16px'
                   }} />
-                  <div className="absolute top-4 left-4 bg-white rounded-lg px-3 py-2 shadow-lg">
-                    <div className="text-2xl font-bold text-zwa-primary">
+                  <div className="absolute top-4 left-4 bg-white rounded-xl px-4 py-3 shadow-xl">
+                    <div className="text-3xl font-bold text-zwa-primary">
                       {format(startDate, 'd')}
                     </div>
-                    <div className="text-xs text-gray-600 font-medium uppercase">
+                    <div className="text-xs text-gray-700 font-bold uppercase tracking-wide">
                       {format(startDate, 'MMM')}
                     </div>
                   </div>
                   {event.featured && (
-                    <div className="absolute top-4 right-4 bg-zwa-accent text-zwa-ink text-xs font-semibold px-3 py-1 rounded-full">
+                    <div className="absolute top-4 right-4 bg-zwa-accent text-zwa-ink text-xs font-bold px-4 py-2 rounded-full shadow-lg">
                       Featured
                     </div>
                   )}
@@ -70,27 +70,27 @@ export default function EventsCarousel({ events = [] }) {
 
                 {/* Event Content */}
                 <div className="p-6">
-                  <h3 className="font-bold text-lg text-zwa-ink mb-2 line-clamp-2">
+                  <h3 className="font-bold text-xl text-zwa-ink mb-3 line-clamp-2 leading-snug">
                     {event.title}
                   </h3>
                   
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                  <p className="text-sm text-gray-700 mb-5 line-clamp-3 leading-relaxed">
                     {event.description}
                   </p>
 
-                  <div className="space-y-2 text-sm text-gray-600">
-                    <div className="flex items-start gap-2">
-                      <Calendar className="w-4 h-4 text-zwa-primary flex-shrink-0 mt-0.5" />
-                      <span>
+                  <div className="space-y-3 text-sm text-gray-700 mb-5">
+                    <div className="flex items-start gap-3">
+                      <Calendar className="w-5 h-5 text-zwa-primary flex-shrink-0 mt-0.5" />
+                      <span className="font-medium">
                         {isSameDay 
                           ? format(startDate, 'MMMM d, yyyy')
                           : `${format(startDate, 'MMM d')} - ${format(endDate, 'MMM d, yyyy')}`
                         }
                       </span>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <MapPin className="w-4 h-4 text-zwa-primary flex-shrink-0 mt-0.5" />
-                      <span>{event.city || 'TBA'}</span>
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-5 h-5 text-zwa-primary flex-shrink-0 mt-0.5" />
+                      <span className="font-medium">{event.city || 'TBA'}</span>
                     </div>
                   </div>
 
@@ -99,7 +99,7 @@ export default function EventsCarousel({ events = [] }) {
                       href={event.rsvp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 btn btn-primary w-full text-sm"
+                      className="btn btn-primary w-full text-sm font-semibold shadow-md hover:shadow-lg transition-shadow"
                     >
                       RSVP
                     </a>

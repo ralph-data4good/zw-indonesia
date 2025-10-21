@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Leaf } from 'lucide-react';
 import { useTranslation } from '../lib/i18n';
 import { cx } from '../lib/utils';
 import LangSwitch from './LangSwitch';
@@ -23,16 +22,14 @@ export default function Header() {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-2 font-semibold text-lg text-zwa-ink hover:text-zwa-primary transition-colors group"
-            aria-label="Zero Waste Asia Indonesia Home"
+            className="flex items-center hover:opacity-80 transition-opacity"
+            aria-label="Zero Waste Indonesia Home"
           >
-            <Leaf className="w-5 h-5 text-zwa-primary group-hover:scale-110 transition-transform" aria-hidden="true" />
-            <div className="relative">
-              <span>Zero Waste Asia</span>
-              <span className="absolute -bottom-1 -right-16 text-[10px] font-medium px-2 py-0.5 bg-zwa-primary text-white rounded-full">
-                Indonesia
-              </span>
-            </div>
+            <img 
+              src={`${import.meta.env.BASE_URL}logo.svg`} 
+              alt="Zero Waste Indonesia" 
+              className="h-10"
+            />
           </Link>
 
           {/* Navigation */}

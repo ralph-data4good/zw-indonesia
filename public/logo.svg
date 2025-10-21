@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
+  <g>
+    <!-- Leaf icon -->
+    <path d="M15,10 Q10,5 5,10 Q5,20 15,30 Q25,20 25,10 Q20,5 15,10 Z M15,12 L15,25" fill="#1abc9c" stroke="#1abc9c" stroke-width="1.5"/>
+    
+    <!-- Zero Waste text -->
+    <text x="35" y="22" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#0f1720">Zero Waste</text>
+    
+    <!-- INDONESIA text -->
+    <text x="35" y="38" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#1abc9c" letter-spacing="1">INDONESIA</text>
+  </g>
+</svg>

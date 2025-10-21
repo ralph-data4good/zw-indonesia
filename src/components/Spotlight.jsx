@@ -42,68 +42,73 @@ export default function Spotlight({ items = [], type = 'mixed' }) {
   const showPhoto = type === 'initiative'; // Show photo for waste picker initiatives
 
   return (
-    <div className="relative bg-gradient-to-br from-zwa-primary-ink to-zwa-surface rounded-2xl overflow-hidden">
+    <div className="relative bg-gradient-to-br from-[#0e3b33] to-[#1a4d43] rounded-2xl overflow-hidden shadow-xl">
       <div className={cx("grid", showPhoto ? "md:grid-cols-2 gap-0" : "grid-cols-1")}>
         {/* Photo Section (for initiatives) */}
         {showPhoto && (
-          <div className="relative h-64 md:h-auto bg-gradient-to-br from-zwa-accent/30 to-zwa-primary/30">
+          <div className="relative h-80 md:h-auto bg-gradient-to-br from-zwa-accent/20 to-zwa-primary/40">
             {/* Placeholder for photo - in real app, this would be current.data.image */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-full h-full bg-cover bg-center opacity-40" style={{
-                backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)`,
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-700 to-gray-800">
+              <div className="w-full h-full bg-cover bg-center opacity-30" style={{
+                backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px)`,
                 backgroundSize: '20px 20px'
               }} />
-              <div className="absolute inset-0 flex items-center justify-center text-white/50">
+              <div className="absolute inset-0 flex items-center justify-center text-white/40">
                 {/* Icon placeholder - can be replaced with actual images */}
-                <svg className="w-24 h-24" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                 </svg>
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 text-white/70 text-xs text-center">
+                Photo placeholder
               </div>
             </div>
           </div>
         )}
 
         {/* Content Section */}
-        <div className="p-8">
+        <div className="p-8 min-h-[320px] flex flex-col">
           <div className="flex items-center gap-2 mb-4">
-            <span className="chip bg-zwa-primary text-white text-xs">
+            <span className="chip bg-zwa-primary text-white text-xs font-semibold shadow-sm">
               {current.type === 'organization' ? 'Organization' : 'Initiative'}
             </span>
             {current.data.status_badge === 'verified' && (
-              <span className="chip bg-zwa-accent text-zwa-ink text-xs">Verified</span>
+              <span className="chip bg-zwa-accent text-zwa-ink text-xs font-semibold shadow-sm">Verified</span>
             )}
           </div>
 
         {current.type === 'organization' ? (
           <>
-            <h3 className="text-2xl font-bold mb-2">{current.data.name}</h3>
-            <p className="text-sm text-zwa-accent mb-4">{current.data.type}</p>
+            <h3 className="text-2xl font-bold mb-2 text-white">{current.data.name}</h3>
+            <p className="text-base text-zwa-accent mb-4 font-medium">{current.data.type}</p>
             {current.data.city && (
-              <div className="flex items-center gap-2 text-sm mb-4">
-                <MapPin className="w-4 h-4" aria-hidden="true" />
+              <div className="flex items-center gap-2 text-sm mb-4 text-white/90">
+                <MapPin className="w-4 h-4 text-zwa-accent" aria-hidden="true" />
                 <span>{current.data.city}, {current.data.province}</span>
               </div>
             )}
-            {current.data.website && (
-              <a 
-                href={current.data.website}
-                className="inline-flex items-center gap-2 text-zwa-accent hover:text-white transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>Visit website</span>
-                <ExternalLink className="w-4 h-4" aria-hidden="true" />
-              </a>
-            )}
+            <div className="mt-auto pt-4">
+              {current.data.website && (
+                <a 
+                  href={current.data.website}
+                  className="inline-flex items-center gap-2 text-zwa-accent hover:text-white transition-colors font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Visit website</span>
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                </a>
+              )}
+            </div>
           </>
         ) : (
           <>
-            <h3 className="text-2xl font-bold mb-2">{current.data.title}</h3>
-            <p className="text-zwa-muted mb-4">{current.data.summary}</p>
+            <h3 className="text-2xl font-bold mb-3 text-white leading-tight">{current.data.title}</h3>
+            <p className="text-white/90 mb-4 text-base leading-relaxed">{current.data.summary}</p>
             {current.data.topics && current.data.topics.length > 0 && (
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mt-auto">
                 {current.data.topics.map((topic) => (
-                  <span key={topic} className="chip bg-zwa-surface text-white text-xs">
+                  <span key={topic} className="chip bg-white/20 text-white text-xs font-medium border border-white/30">
                     {topic}
                   </span>
                 ))}

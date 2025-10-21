@@ -99,13 +99,13 @@ export default function Home() {
         >
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {initiatives.slice(0, 3).map((initiative) => (
-              <div key={initiative.id} className="bg-white rounded-lg p-6 border border-gray-200 hover:border-zwa-primary transition-colors">
-                <h4 className="font-bold text-lg text-zwa-ink mb-2">{initiative.title}</h4>
-                <p className="text-sm text-gray-600 mb-3">{initiative.summary}</p>
+              <div key={initiative.id} className="bg-white rounded-xl p-7 border-2 border-gray-200 hover:border-zwa-primary hover:shadow-lg transition-all group">
+                <h4 className="font-bold text-xl text-zwa-ink mb-3 group-hover:text-zwa-primary transition-colors leading-snug">{initiative.title}</h4>
+                <p className="text-base text-gray-700 mb-4 leading-relaxed">{initiative.summary}</p>
                 {initiative.topics && initiative.topics.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     {initiative.topics.map((topic) => (
-                      <span key={topic} className="chip bg-zwa-surface text-zwa-ink text-xs">
+                      <span key={topic} className="chip bg-zwa-surface/50 text-zwa-ink text-xs font-medium border border-gray-200">
                         {topic}
                       </span>
                     ))}
