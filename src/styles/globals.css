@@ -31,23 +31,28 @@
     @apply bg-bg text-fg font-sans antialiased;
     font-size: 16px;
     line-height: 1.625;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Typography Scale - ZWA Design System */
   h1 {
     @apply text-2xl md:text-3xl font-bold tracking-tight text-fg;
+    line-height: 1.2;
   }
 
   h2 {
     @apply text-xl md:text-2xl font-bold tracking-tight text-fg;
+    line-height: 1.3;
   }
 
   h3 {
-    @apply text-lg font-semibold text-fg;
+    @apply text-lg md:text-xl font-semibold text-fg;
+    line-height: 1.4;
   }
 
   h4 {
-    @apply text-base font-semibold text-fg;
+    @apply text-base md:text-lg font-semibold text-fg;
   }
 
   h5, h6 {
@@ -82,7 +87,7 @@
 
   /* Skip to content link */
   .skip-to-content {
-    @apply absolute -top-12 left-4 z-50 bg-primary text-white px-4 py-2 rounded-lg;
+    @apply absolute -top-12 left-4 z-50 bg-primary text-white px-4 py-2 rounded-lg font-medium;
     @apply focus:top-4 transition-all;
   }
 }
@@ -90,7 +95,7 @@
 @layer components {
   /* Button Variants - ZWA Design System */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg font-medium text-base;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg font-semibold text-base;
     @apply transition-all duration-200 focus-visible:outline-none focus-visible:ring-2;
     min-height: 44px; /* Accessibility - minimum touch target */
   }
@@ -113,15 +118,16 @@
 
   /* Ghost Button - Subtle Actions */
   .btn-ghost {
-    @apply bg-transparent text-fg-muted hover:bg-neutral-100;
+    @apply bg-transparent text-fg-muted hover:bg-neutral-100 hover:text-fg;
     @apply px-4 py-2;
+    font-weight: 500;
   }
 
   /* Outline Button - Secondary Emphasis */
   .btn-outline {
     @apply bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white;
     @apply px-6 py-2.5;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   /* Cards - ZWA Design System */
@@ -138,13 +144,9 @@
     @apply bg-header-bg text-white rounded-xl border border-white/10;
   }
 
-  /* Tags/Chips - ZWA Design System */
-  .chip {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
-  }
-
+  /* Badges - Consistent styling */
   .badge {
-    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold;
+    @apply inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold shadow-sm;
   }
 
   .badge-primary {
@@ -163,8 +165,17 @@
     @apply bg-accent text-white;
   }
 
+  .badge-featured {
+    @apply bg-secondary text-white;
+  }
+
   .badge-category {
     @apply bg-secondary text-white;
+  }
+
+  /* Tags/Chips - ZWA Design System */
+  .chip {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
   }
 
   /* Container - ZWA Design System */
@@ -184,6 +195,7 @@
     @apply text-fg placeholder:text-fg-muted;
     @apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
     @apply transition-all duration-200;
+    font-size: 15px;
   }
 
   .input-error {
@@ -192,11 +204,10 @@
 
   /* Select dropdown */
   .select {
-    @apply input appearance-none bg-white;
+    @apply input appearance-none bg-white pr-10;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%234B5563' d='M4.5 6l3.5 3.5L11.5 6z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
-    padding-right: 40px;
   }
 
   /* Search bar */
@@ -205,23 +216,26 @@
   }
 
   .search-input {
-    @apply flex-1 px-6 py-3 rounded-lg border border-border bg-white;
+    @apply flex-1 px-6 py-3.5 rounded-lg border border-border bg-white;
     @apply text-base placeholder:text-fg-muted;
     @apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+    @apply shadow-sm;
+    font-size: 16px;
   }
 
   .search-button {
-    @apply btn-secondary px-8 py-3 text-base font-semibold;
+    @apply px-8 py-3.5 rounded-lg bg-header-bg text-white hover:bg-primary-dark;
+    @apply font-semibold text-base shadow-sm hover:shadow-md transition-all hover:scale-[1.02];
     min-width: 120px;
   }
 
   /* Filter sidebar */
   .filter-sidebar {
-    @apply bg-neutral-50 border border-border rounded-xl p-6;
+    @apply bg-neutral-50 border border-border rounded-xl p-6 shadow-sm;
   }
 
   .filter-section {
-    @apply space-y-4 pb-6 border-b border-border last:border-b-0 last:pb-0;
+    @apply space-y-3 pb-6 mb-6 border-b border-border last:border-b-0 last:pb-0 last:mb-0;
   }
 
   .filter-label {
@@ -230,16 +244,28 @@
 
   /* View toggle buttons */
   .view-toggle {
-    @apply inline-flex rounded-lg border border-border bg-white overflow-hidden;
+    @apply inline-flex rounded-lg border border-border bg-white overflow-hidden shadow-sm;
   }
 
   .view-toggle-btn {
-    @apply px-4 py-2 text-sm font-medium text-fg-muted;
+    @apply px-4 py-2.5 text-sm font-medium text-fg-muted;
     @apply hover:bg-neutral-50 transition-colors;
+    @apply flex items-center justify-center;
   }
 
   .view-toggle-btn.active {
-    @apply bg-primary text-white;
+    @apply bg-primary text-white shadow-sm;
+  }
+
+  /* Better text readability */
+  .text-readable {
+    @apply text-base leading-relaxed;
+    color: #1f2937;
+  }
+
+  .text-readable-muted {
+    @apply text-sm leading-relaxed;
+    color: #4b5563;
   }
 }
 
@@ -256,5 +282,14 @@
 
   .bg-gradient-hero {
     background: linear-gradient(135deg, #0D3A4E 0%, #12281d 50%, #0b1b13 100%);
+  }
+
+  /* Shadow utilities for consistency */
+  .shadow-card {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-card-hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 }
