@@ -1,87 +1,143 @@
-import { MapPin, ExternalLink } from 'lucide-react';
-import { getDirectionsUrl } from '../lib/utils';
+import { MapPin, ExternalLink, CheckCircle } from 'lucide-react';
 
-export default function DirectoryList({ entries = [], loading = false }) {
-  if (loading) {
+export default function DirectoryList({ entries = [], viewMode = 'grid' }) {
+  if (viewMode === 'table') {
     return (
-      <div className="p-4">
-        <p className="text-gray-500 text-sm">Loading...</p>
+      <div className="bg-white rounded-xl border border-border overflow-hidden">
+        <table className="w-full">
+          <thead className="bg-neutral-50 border-b border-border">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-fg uppercase tracking-wider">
+                Name
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-fg uppercase tracking-wider">
+                Type
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-fg uppercase tracking-wider">
+                Location
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-fg uppercase tracking-wider">
+                Status
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border">
+            {entries.map((entry) => (
+              <tr key={entry.id} className="hover:bg-neutral-50 transition-colors">
+                <td className="px-6 py-4">
+                  <div className="font-semibold text-fg">{entry.name}</div>
+                  {entry.topics && entry.topics.length > 0 && (
+                    <div className="flex flex-wrap gap-1 mt-2">
+                      {entry.topics.slice(0, 2).map((topic) => (
+                        <span key={topic} className="chip bg-neutral-100 text-fg-muted text-xs">
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </td>
+                <td className="px-6 py-4 text-sm text-fg-muted">
+                  {entry.entry_type || entry.type}
+                </td>
+                <td className="px-6 py-4">
+                  <div className="flex items-center gap-2 text-sm text-fg-muted">
+                    <MapPin className="w-4 h-4" />
+                    <span>{entry.city}, {entry.country}</span>
+                  </div>
+                </td>
+                <td className="px-6 py-4">
+                  {entry.status_badge === 'verified' && (
+                    <span className="badge-verified">
+                      <CheckCircle className="w-3 h-3" />
+                      Verified
+                    </span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   }
 
-  if (!entries.length) {
-    return (
-      <div className="p-4">
-        <p className="text-gray-500 text-sm">No entries found in current view</p>
-      </div>
-    );
-  }
-
+  // Grid view
   return (
-    <div className="divide-y divide-gray-200">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {entries.map((entry) => (
-        <div key={entry.id} className="p-4 hover:bg-gray-50 transition-colors">
-          <div className="flex items-start justify-between gap-2 mb-2">
-            <h4 className="font-semibold text-zwa-ink">{entry.name}</h4>
-            {entry.status_badge && (
-              <span className={`chip text-xs flex-shrink-0 ${
-                entry.status_badge === 'verified' ? 'chip-active' : 'chip-accent'
-              }`}>
-                {entry.status_badge}
-              </span>
+        <div
+          key={entry.id}
+          className="card-hover overflow-hidden"
+        >
+          {/* Image placeholder */}
+          <div className="h-48 bg-gradient-to-br from-neutral-100 to-neutral-200 relative overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <svg className="w-16 h-16 text-neutral-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
+            {/* Category badge */}
+            {(entry.entry_type || entry.type) && (
+              <div className="absolute top-3 left-3">
+                <span className="badge-category shadow-sm">
+                  {entry.entry_type || entry.type}
+                </span>
+              </div>
+            )}
+            {/* Verified badge */}
+            {entry.status_badge === 'verified' && (
+              <div className="absolute top-3 right-3">
+                <span className="badge-verified shadow-sm">
+                  <CheckCircle className="w-3 h-3" />
+                  Verified
+                </span>
+              </div>
             )}
           </div>
 
-          <p className="text-sm text-gray-600 mb-2">
-            {entry.entry_type || entry.type}
-          </p>
+          {/* Content */}
+          <div className="p-5">
+            <h3 className="font-bold text-lg text-fg mb-2 line-clamp-2">
+              {entry.name}
+            </h3>
 
-          {(entry.city || entry.province) && (
-            <div className="flex items-center gap-1 text-xs text-gray-500 mb-3">
-              <MapPin className="w-3 h-3" aria-hidden="true" />
-              <span>
-                {[entry.city, entry.province].filter(Boolean).join(', ')}
-              </span>
+            {/* Location */}
+            <div className="flex items-center gap-2 text-sm text-fg-muted mb-3">
+              <MapPin className="w-4 h-4 flex-shrink-0" />
+              <span>{entry.city}, {entry.country}</span>
             </div>
-          )}
 
-          {entry.meta?.description && (
-            <p className="text-sm text-gray-600 mb-3">
-              {entry.meta.description}
-            </p>
-          )}
-
-          {entry.endorse_score !== undefined && (
-            <div className="mb-3">
-              <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
-                <span>Community endorsement</span>
-                <span>{entry.endorse_score}/5</span>
+            {/* Topics */}
+            {entry.topics && entry.topics.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                {entry.topics.slice(0, 3).map((topic) => (
+                  <span key={topic} className="chip bg-neutral-100 text-fg-muted">
+                    {topic}
+                  </span>
+                ))}
+                {entry.topics.length > 3 && (
+                  <span className="chip bg-neutral-100 text-fg-muted">
+                    +{entry.topics.length - 3}
+                  </span>
+                )}
               </div>
-              <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-zwa-accent rounded-full"
-                  style={{ width: `${(entry.endorse_score / 5) * 100}%` }}
-                />
-              </div>
-            </div>
-          )}
+            )}
 
-          {entry.coords && entry.coords.length === 2 && (
-            <a
-              href={getDirectionsUrl(entry.coords[1], entry.coords[0])}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm text-zwa-primary hover:text-zwa-primary/80 font-medium transition-colors"
-            >
-              <MapPin className="w-4 h-4" aria-hidden="true" />
-              <span>Get Directions</span>
-              <ExternalLink className="w-3 h-3" aria-hidden="true" />
-            </a>
-          )}
+            {/* Actions */}
+            {entry.website && (
+              <a
+                href={entry.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm transition-colors"
+              >
+                <span>Visit website</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
+          </div>
         </div>
       ))}
     </div>
   );
 }
-

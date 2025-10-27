@@ -1,60 +1,96 @@
-import { ArrowRight } from 'lucide-react';
-import Card from './Card';
+import { Calendar, MapPin, Users, CheckCircle } from 'lucide-react';
 
 export default function CampaignCard({ campaign }) {
   return (
-    <Card className="p-6 h-full flex flex-col">
-      <div className="flex items-start justify-between mb-3">
-        <div className="flex-1">
-          <h3 className="text-xl font-semibold text-zwa-ink mb-2">
-            {campaign.title}
-          </h3>
-          {campaign.tagline && (
-            <p className="text-gray-600">
-              {campaign.tagline}
-            </p>
-          )}
+    <div className="card-hover overflow-hidden">
+      {/* Image placeholder */}
+      <div className="h-48 bg-gradient-to-br from-accent/20 to-accent/40 relative overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <svg className="w-16 h-16 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+          </svg>
         </div>
-        {campaign.status && (
-          <span className={`chip text-xs ${
-            campaign.status === 'active' ? 'chip-active' :
-            campaign.status === 'upcoming' ? 'chip-accent' :
-            'chip-default'
-          }`}>
-            {campaign.status}
-          </span>
+        
+        {/* Featured badge */}
+        {campaign.featured && (
+          <div className="absolute top-3 left-3">
+            <span className="badge-secondary shadow-sm">
+              Featured
+            </span>
+          </div>
+        )}
+        
+        {/* Verified badge */}
+        {campaign.verified && (
+          <div className="absolute top-3 right-3">
+            <span className="badge-verified shadow-sm">
+              <CheckCircle className="w-3 h-3" />
+              Verified
+            </span>
+          </div>
         )}
       </div>
-      
-      {campaign.topics && campaign.topics.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {campaign.topics.map((topic) => (
-            <span key={topic} className="chip chip-default text-xs">
-              {topic}
-            </span>
-          ))}
+
+      {/* Content */}
+      <div className="p-5">
+        <h3 className="font-bold text-lg text-fg mb-2 line-clamp-2 leading-tight">
+          {campaign.title}
+        </h3>
+
+        <p className="text-sm text-fg-muted mb-4 line-clamp-3 leading-relaxed">
+          {campaign.description}
+        </p>
+
+        {/* Meta information */}
+        <div className="space-y-2 mb-4">
+          {campaign.city && (
+            <div className="flex items-center gap-2 text-sm text-fg-muted">
+              <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
+              <span>{campaign.city}, {campaign.country}</span>
+            </div>
+          )}
+          {campaign.end_date && (
+            <div className="flex items-center gap-2 text-sm text-fg-muted">
+              <Calendar className="w-4 h-4 text-primary flex-shrink-0" />
+              <span>Until {new Date(campaign.end_date).toLocaleDateString()}</span>
+            </div>
+          )}
+          {campaign.participants && (
+            <div className="flex items-center gap-2 text-sm text-fg-muted">
+              <Users className="w-4 h-4 text-primary flex-shrink-0" />
+              <span>{campaign.participants} participants</span>
+            </div>
+          )}
         </div>
-      )}
-      
-      <div className="mt-auto pt-4 border-t border-gray-200">
-        {campaign.partners && campaign.partners.length > 0 && (
-          <p className="text-sm text-zwa-muted mb-3">
-            Partners: {campaign.partners.join(', ')}
-          </p>
+
+        {/* Topics */}
+        {campaign.topics && campaign.topics.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {campaign.topics.slice(0, 3).map((topic) => (
+              <span key={topic} className="chip bg-neutral-100 text-fg-muted">
+                {topic}
+              </span>
+            ))}
+            {campaign.topics.length > 3 && (
+              <span className="chip bg-neutral-100 text-fg-muted">
+                +{campaign.topics.length - 3}
+              </span>
+            )}
+          </div>
         )}
-        {campaign.cta && (
-          <a 
-            href={campaign.cta.url}
-            className="inline-flex items-center gap-2 text-zwa-primary font-medium hover:text-zwa-primary/80 transition-colors"
+
+        {/* Action button */}
+        {campaign.url && (
+          <a
+            href={campaign.url}
             target="_blank"
             rel="noopener noreferrer"
+            className="block w-full text-center px-4 py-2.5 rounded-lg bg-secondary text-white hover:bg-secondary-dark font-semibold text-sm transition-all hover:scale-[1.02] shadow-sm"
           >
-            <span>{campaign.cta.label}</span>
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            Join Campaign
           </a>
         )}
       </div>
-    </Card>
+    </div>
   );
 }
-

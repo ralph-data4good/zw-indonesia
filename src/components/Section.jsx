@@ -1,55 +1,57 @@
 import { cx } from '../lib/utils';
 
-export default function Section({ 
-  eyebrow, 
-  title, 
-  description, 
-  children, 
-  className,
+export default function Section({
+  children,
+  className = '',
+  eyebrow = '',
+  title = '',
+  description = '',
   centered = false,
-  dark = false 
+  dark = false,
 }) {
   return (
     <section className={cx(
-      'py-16 md:py-20',
-      dark ? 'bg-zwa-ink' : 'bg-white',
+      'section',
+      dark ? 'bg-header-bg text-white' : 'bg-bg',
       className
     )}>
       <div className="container-custom">
         {(eyebrow || title || description) && (
           <div className={cx(
             'mb-12',
-            centered && 'text-center max-w-3xl mx-auto'
+            centered ? 'text-center max-w-3xl mx-auto' : ''
           )}>
             {eyebrow && (
-              <p className={cx(
+              <div className={cx(
                 'text-sm font-semibold uppercase tracking-wider mb-3',
-                dark ? 'text-zwa-accent' : 'text-zwa-primary'
+                dark ? 'text-secondary' : 'text-primary'
               )}>
                 {eyebrow}
-              </p>
+              </div>
             )}
+            
             {title && (
               <h2 className={cx(
-                'mb-4',
-                dark ? 'text-white' : 'text-zwa-ink'
+                'text-h2 font-bold mb-4',
+                dark ? 'text-white' : 'text-fg'
               )}>
                 {title}
               </h2>
             )}
+            
             {description && (
               <p className={cx(
-                'text-lg',
-                dark ? 'text-zwa-muted' : 'text-gray-600'
+                'text-lg leading-relaxed',
+                dark ? 'text-white/80' : 'text-fg-muted'
               )}>
                 {description}
               </p>
             )}
           </div>
         )}
+        
         {children}
       </div>
     </section>
   );
 }
-

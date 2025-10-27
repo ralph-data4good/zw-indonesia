@@ -3,62 +3,74 @@ import { useTranslation } from '../lib/i18n';
 
 export default function Footer() {
   const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
+
+  const footerLinks = [
+    { path: '/about', label: 'About' },
+    { path: '/map', label: 'Directory' },
+    { path: '/resources', label: 'Resources' },
+    { path: '/events', label: 'Events' },
+    { path: '/calculator', label: 'Calculator' },
+  ];
 
   return (
-    <footer className="bg-zwa-ink text-white mt-auto">
+    <footer className="bg-header-bg text-white border-t border-primary-dark">
       <div className="container-custom py-12">
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Country switch note */}
-          <div className="md:col-span-2">
-            <p className="text-sm text-zwa-muted mb-3">
-              {t('footer.countrySwitch')}
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
+          {/* Brand */}
+          <div>
+            <img
+              src={`${import.meta.env.BASE_URL}logo.svg`}
+              alt="Zero Waste Indonesia"
+              className="h-10 mb-4 brightness-0 invert"
+            />
+            <p className="text-white/80 text-sm leading-relaxed">
+              Connecting communities, resources, and initiatives for a waste-free future in Indonesia.
             </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="chip chip-active cursor-default">Indonesia</span>
-              <a href="#" className="chip bg-zwa-surface text-white hover:bg-zwa-primary-ink">
-                Philippines
-              </a>
-              <a href="#" className="chip bg-zwa-surface text-white hover:bg-zwa-primary-ink">
-                Vietnam
-              </a>
-              <a href="#" className="chip bg-zwa-surface text-white hover:bg-zwa-primary-ink">
-                Thailand
-              </a>
-            </div>
           </div>
 
           {/* Links */}
           <div>
-            <nav className="flex flex-col gap-2" aria-label="Footer navigation">
-              <Link 
-                to="/about" 
-                className="text-sm text-zwa-muted hover:text-white transition-colors"
-              >
-                {t('footer.contact')}
-              </Link>
-              <a 
-                href="#" 
-                className="text-sm text-zwa-muted hover:text-white transition-colors"
-              >
-                {t('footer.privacy')}
-              </a>
-              <a 
-                href="#" 
-                className="text-sm text-zwa-muted hover:text-white transition-colors"
-              >
-                {t('footer.terms')}
-              </a>
+            <h3 className="font-bold text-lg mb-4">Quick Links</h3>
+            <nav className="space-y-2">
+              {footerLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="block text-white/80 hover:text-white text-sm transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </nav>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="font-bold text-lg mb-4">Get Involved</h3>
+            <p className="text-white/80 text-sm mb-4">
+              Join the movement towards zero waste in Indonesia.
+            </p>
+            <Link
+              to="/about"
+              className="inline-flex items-center px-6 py-2.5 rounded-lg bg-secondary text-white hover:bg-secondary-dark font-medium text-sm transition-all hover:scale-[1.02]"
+            >
+              Contribute
+            </Link>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-zwa-border">
-          <p className="text-sm text-zwa-muted text-center">
-            {t('footer.credit')} • {new Date().getFullYear()}
+        {/* Bottom */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-white/60 text-sm">
+            © {currentYear} Zero Waste Asia. All rights reserved.
           </p>
+          <div className="flex gap-6 text-sm text-white/60">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
-

@@ -2,17 +2,13 @@ import { Link } from 'react-router-dom';
 import { Map, BookOpen, Calculator } from 'lucide-react';
 import { cx } from '../lib/utils';
 
-export default function Hero({ title, subtitle, showLinks = true, backgroundImage, className }) {
+export default function Hero({ title, subtitle, showLinks = true, className }) {
   return (
-    <section 
+    <section
       className={cx(
-        'relative py-24 md:py-32 lg:py-40 overflow-hidden',
-        backgroundImage && 'gradient-overlay',
+        'relative py-24 md:py-32 lg:py-40 overflow-hidden bg-gradient-hero',
         className
       )}
-      style={{
-        background: 'linear-gradient(135deg, #0e3b33 0%, #12281d 50%, #0b1b13 100%)'
-      }}
     >
       {/* Dotted Indonesia Map Background */}
       <div className="absolute inset-0 opacity-20" style={{
@@ -30,43 +26,38 @@ export default function Hero({ title, subtitle, showLinks = true, backgroundImag
       
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className={cx(
-            'text-balance mb-6',
-            backgroundImage ? 'text-white' : 'text-white'
-          )}>
+          <h1 className="text-hero font-extrabold text-white mb-6 text-balance">
             {title}
           </h1>
-          {subtitle && (
-            <p className={cx(
-              'text-xl md:text-2xl mb-10 text-balance',
-              backgroundImage ? 'text-white/90' : 'text-zwa-accent'
-            )}>
-              {subtitle}
-            </p>
-          )}
           
+          <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed max-w-2xl mx-auto">
+            {subtitle}
+          </p>
+
           {showLinks && (
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link 
-                to="/map" 
-                className="btn btn-primary inline-flex items-center gap-2"
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link
+                to="/map"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-white text-header-bg hover:bg-neutral-100 font-semibold text-base shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
               >
                 <Map className="w-5 h-5" aria-hidden="true" />
-                <span>Explore Map</span>
+                <span>Explore Directory</span>
               </Link>
-              <Link 
-                to="/resources" 
-                className="btn bg-white text-zwa-ink hover:bg-gray-100 inline-flex items-center gap-2"
+
+              <Link
+                to="/resources"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-primary text-white hover:bg-primary-dark font-semibold text-base shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
               >
                 <BookOpen className="w-5 h-5" aria-hidden="true" />
-                <span>Resource Library</span>
+                <span>Browse Resources</span>
               </Link>
-              <Link 
-                to="/calculator" 
-                className="btn btn-ghost border-white text-white hover:bg-white/10 inline-flex items-center gap-2"
+
+              <Link
+                to="/calculator"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-transparent border-2 border-white text-white hover:bg-white hover:text-header-bg font-semibold text-base transition-all hover:scale-[1.02]"
               >
                 <Calculator className="w-5 h-5" aria-hidden="true" />
-                <span>Calculator</span>
+                <span>Use Calculator</span>
               </Link>
             </div>
           )}
@@ -75,4 +66,3 @@ export default function Hero({ title, subtitle, showLinks = true, backgroundImag
     </section>
   );
 }
-

@@ -1,182 +1,323 @@
 import { useState, useEffect } from 'react';
-import { Grid3x3, List } from 'lucide-react';
-import { useTranslation } from '../lib/i18n';
-import { useResources as useMockResources } from '../lib/useMockData';
-import { cx } from '../lib/utils';
+import { Search, Grid as GridIcon, List, CheckCircle } from 'lucide-react';
 import ResourceCard from '../components/ResourceCard';
-import Filters from '../components/Filters';
-import Section from '../components/Section';
+import { useResources } from '../lib/useMockData';
 
 export default function Resources() {
-  const { t } = useTranslation();
-  const { data: resources, loading } = useMockResources();
-  
+  const { data: resources, loading, error } = useResources();
   const [searchValue, setSearchValue] = useState('');
-  const [selectedFilters, setSelectedFilters] = useState([]);
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+  const [selectedTopics, setSelectedTopics] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCountries, setSelectedCountries] = useState([]);
   const [filteredResources, setFilteredResources] = useState([]);
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'table'
 
-  // Extract unique filter options from data
-  const topics = [...new Set(resources?.flatMap(r => r.topics || []) || [])];
-  const years = [...new Set(resources?.map(r => r.year).filter(Boolean) || [])].sort((a, b) => b - a);
-  const formats = [...new Set(resources?.map(r => r.format).filter(Boolean) || [])];
-  const accessTypes = [...new Set(resources?.map(r => r.access_type).filter(Boolean) || [])];
+  // Extract unique values for filters
+  const allTopics = [...new Set(resources?.flatMap(r => r.topics || []) || [])];
+  const allTypes = [...new Set(resources?.map(r => r.type) || [])];
+  const allCategories = [...new Set(resources?.map(r => r.category) || [])];
+  const allCountries = [...new Set(resources?.flatMap(r => r.countries || []) || [])];
 
   useEffect(() => {
     if (!resources) return;
 
     let filtered = [...resources];
 
-    // Apply search
-    if (searchValue) {
+    // Apply search filter
+    if (searchValue.trim()) {
       const search = searchValue.toLowerCase();
       filtered = filtered.filter(resource =>
-        resource.title.toLowerCase().includes(search) ||
-        resource.summary?.toLowerCase().includes(search) ||
-        resource.source?.org.toLowerCase().includes(search)
+        resource.title?.toLowerCase().includes(search) ||
+        resource.description?.toLowerCase().includes(search) ||
+        resource.topics?.some(t => t.toLowerCase().includes(search))
       );
     }
 
     // Apply filters
-    const topicFilters = selectedFilters.filter(f => f.key === 'topic');
-    if (topicFilters.length > 0) {
-      filtered = filtered.filter(resource =>
-        resource.topics?.some(topic => topicFilters.some(f => f.value === topic))
-      );
+    if (selectedTopics.length > 0) {
+      filtered = filtered.filter(r => r.topics?.some(t => selectedTopics.includes(t)));
     }
 
-    const yearFilters = selectedFilters.filter(f => f.key === 'year');
-    if (yearFilters.length > 0) {
-      filtered = filtered.filter(resource =>
-        yearFilters.some(f => f.value === String(resource.year))
-      );
+    if (selectedTypes.length > 0) {
+      filtered = filtered.filter(r => selectedTypes.includes(r.type));
     }
 
-    const formatFilters = selectedFilters.filter(f => f.key === 'format');
-    if (formatFilters.length > 0) {
-      filtered = filtered.filter(resource =>
-        formatFilters.some(f => f.value === resource.format)
-      );
+    if (selectedCategories.length > 0) {
+      filtered = filtered.filter(r => selectedCategories.includes(r.category));
     }
 
-    const accessFilters = selectedFilters.filter(f => f.key === 'access');
-    if (accessFilters.length > 0) {
-      filtered = filtered.filter(resource =>
-        accessFilters.some(f => f.value === resource.access_type)
-      );
+    if (selectedCountries.length > 0) {
+      filtered = filtered.filter(r => r.countries?.some(c => selectedCountries.includes(c)));
     }
 
     setFilteredResources(filtered);
-  }, [resources, searchValue, selectedFilters]);
+  }, [resources, searchValue, selectedTopics, selectedTypes, selectedCategories, selectedCountries]);
 
-  const handleFilterToggle = (key, value) => {
-    setSelectedFilters(prev => {
-      const exists = prev.some(f => f.key === key && f.value === value);
-      if (exists) {
-        return prev.filter(f => !(f.key === key && f.value === value));
-      } else {
-        return [...prev, { key, value }];
-      }
-    });
+  const handleSearch = (e) => {
+    e.preventDefault();
   };
 
+  const clearFilters = () => {
+    setSelectedTopics([]);
+    setSelectedTypes([]);
+    setSelectedCategories([]);
+    setSelectedCountries([]);
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-fg-muted">Loading resources...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container-custom py-16">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+          <p className="text-red-800">Error loading resources: {error}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <Section
-        eyebrow="Knowledge Base"
-        title={t('resources.title')}
-        description="Browse reports, guides, toolkits, and research supporting zero waste initiatives across Indonesia"
-        centered={true}
-      >
-        <div className="grid lg:grid-cols-4 gap-8">
-          {/* Filters sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-20">
-              <Filters
-                searchValue={searchValue}
-                onSearchChange={setSearchValue}
-                filters={[
-                  {
-                    key: 'topic',
-                    label: t('resources.topic'),
-                    options: topics.map(t => ({ value: t, label: t }))
-                  },
-                  {
-                    key: 'year',
-                    label: t('resources.year'),
-                    options: years.map(y => ({ value: String(y), label: String(y) }))
-                  },
-                  {
-                    key: 'format',
-                    label: t('resources.format'),
-                    options: formats.map(f => ({ value: f, label: f }))
-                  },
-                  {
-                    key: 'access',
-                    label: t('resources.access'),
-                    options: accessTypes.map(a => ({ value: a, label: a }))
-                  }
-                ]}
-                selectedFilters={selectedFilters}
-                onFilterToggle={handleFilterToggle}
+    <div className="bg-bg-muted min-h-screen">
+      <div className="container-custom py-8">
+        {/* Search Bar */}
+        <div className="mb-8">
+          <h1 className="text-h1 mb-6">Resource Library</h1>
+          <form onSubmit={handleSearch} className="search-bar">
+            <div className="relative flex-1">
+              <input
+                type="text"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                placeholder="Search resources"
+                className="search-input"
+                aria-label="Search resources"
               />
             </div>
-          </div>
+            <button type="submit" className="search-button">
+              Search
+            </button>
+          </form>
+        </div>
 
-          {/* Results */}
-          <div className="lg:col-span-3">
-            {/* View controls */}
+        {/* Filters and Results */}
+        <div className="grid lg:grid-cols-[280px_1fr] gap-8">
+          {/* Left Sidebar - Filters */}
+          <aside className="filter-sidebar h-fit">
             <div className="flex items-center justify-between mb-6">
-              <p className="text-sm text-gray-600">
-                {loading ? t('common.loading') : `${filteredResources.length} resources`}
-              </p>
-              <div className="flex gap-1">
+              <h2 className="text-lg font-bold text-fg">Refine Results</h2>
+              {(selectedTopics.length > 0 || selectedTypes.length > 0 || selectedCategories.length > 0 || selectedCountries.length > 0) && (
                 <button
-                  onClick={() => setViewMode('grid')}
-                  className={cx(
-                    'p-2 rounded-lg transition-colors',
-                    viewMode === 'grid'
-                      ? 'bg-zwa-primary text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  )}
-                  aria-label={t('resources.viewGrid')}
+                  onClick={clearFilters}
+                  className="text-sm text-primary hover:text-primary-dark font-medium"
                 >
-                  <Grid3x3 className="w-4 h-4" aria-hidden="true" />
+                  Clear all
                 </button>
-                <button
-                  onClick={() => setViewMode('list')}
-                  className={cx(
-                    'p-2 rounded-lg transition-colors',
-                    viewMode === 'list'
-                      ? 'bg-zwa-primary text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  )}
-                  aria-label={t('resources.viewList')}
-                >
-                  <List className="w-4 h-4" aria-hidden="true" />
-                </button>
+              )}
+            </div>
+
+            {/* Topics Filter */}
+            <div className="filter-section">
+              <label className="filter-label">Topics</label>
+              <select
+                className="select w-full"
+                value=""
+                onChange={(e) => {
+                  if (e.target.value && !selectedTopics.includes(e.target.value)) {
+                    setSelectedTopics([...selectedTopics, e.target.value]);
+                  }
+                }}
+              >
+                <option value="">Select topics</option>
+                {allTopics.map(topic => (
+                  <option key={topic} value={topic}>{topic}</option>
+                ))}
+              </select>
+              {selectedTopics.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {selectedTopics.map(topic => (
+                    <span key={topic} className="chip bg-primary text-white">
+                      {topic}
+                      <button
+                        onClick={() => setSelectedTopics(selectedTopics.filter(t => t !== topic))}
+                        className="ml-2 hover:text-red-200"
+                        aria-label={`Remove ${topic} filter`}
+                      >
+                        ×
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Types Filter */}
+            <div className="filter-section">
+              <label className="filter-label">Types</label>
+              <select
+                className="select w-full"
+                value=""
+                onChange={(e) => {
+                  if (e.target.value && !selectedTypes.includes(e.target.value)) {
+                    setSelectedTypes([...selectedTypes, e.target.value]);
+                  }
+                }}
+              >
+                <option value="">Select types</option>
+                {allTypes.map(type => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </select>
+              {selectedTypes.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {selectedTypes.map(type => (
+                    <span key={type} className="chip bg-primary text-white">
+                      {type}
+                      <button
+                        onClick={() => setSelectedTypes(selectedTypes.filter(t => t !== type))}
+                        className="ml-2 hover:text-red-200"
+                        aria-label={`Remove ${type} filter`}
+                      >
+                        ×
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Categories Filter */}
+            <div className="filter-section">
+              <label className="filter-label">Categories</label>
+              <select
+                className="select w-full"
+                value=""
+                onChange={(e) => {
+                  if (e.target.value && !selectedCategories.includes(e.target.value)) {
+                    setSelectedCategories([...selectedCategories, e.target.value]);
+                  }
+                }}
+              >
+                <option value="">Select categories</option>
+                {allCategories.map(category => (
+                  <option key={category} value={category}>{category}</option>
+                ))}
+              </select>
+              {selectedCategories.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {selectedCategories.map(category => (
+                    <span key={category} className="chip bg-primary text-white">
+                      {category}
+                      <button
+                        onClick={() => setSelectedCategories(selectedCategories.filter(c => c !== category))}
+                        className="ml-2 hover:text-red-200"
+                        aria-label={`Remove ${category} filter`}
+                      >
+                        ×
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Countries Filter */}
+            <div className="filter-section">
+              <label className="filter-label">Countries</label>
+              <select
+                className="select w-full"
+                value=""
+                onChange={(e) => {
+                  if (e.target.value && !selectedCountries.includes(e.target.value)) {
+                    setSelectedCountries([...selectedCountries, e.target.value]);
+                  }
+                }}
+              >
+                <option value="">Select countries</option>
+                {allCountries.map(country => (
+                  <option key={country} value={country}>{country}</option>
+                ))}
+              </select>
+              {selectedCountries.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {selectedCountries.map(country => (
+                    <span key={country} className="chip bg-primary text-white">
+                      {country}
+                      <button
+                        onClick={() => setSelectedCountries(selectedCountries.filter(c => c !== country))}
+                        className="ml-2 hover:text-red-200"
+                        aria-label={`Remove ${country} filter`}
+                      >
+                        ×
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </aside>
+
+          {/* Main Content - Results */}
+          <div>
+            {/* Results Header */}
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-fg">
+                Showing {filteredResources.length} of {resources?.length || 0} results
+              </h2>
+
+              {/* View Toggle */}
+              <div className="flex items-center gap-4">
+                <div className="view-toggle">
+                  <button
+                    onClick={() => setViewMode('grid')}
+                    className={`view-toggle-btn ${viewMode === 'grid' ? 'active' : ''}`}
+                    aria-label="Grid view"
+                  >
+                    <GridIcon className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setViewMode('table')}
+                    className={`view-toggle-btn ${viewMode === 'table' ? 'active' : ''}`}
+                    aria-label="Table view"
+                  >
+                    <List className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <select className="select text-sm py-2">
+                  <option>Default sorting</option>
+                  <option>Title A-Z</option>
+                  <option>Title Z-A</option>
+                  <option>Newest first</option>
+                </select>
               </div>
             </div>
 
-            {/* Resources grid/list */}
-            {loading ? (
-              <p className="text-gray-500 text-center py-12">{t('common.loading')}</p>
-            ) : filteredResources.length === 0 ? (
-              <p className="text-gray-500 text-center py-12">No resources found</p>
-            ) : (
-              <div className={cx(
-                'gap-6',
-                viewMode === 'grid' ? 'grid md:grid-cols-2 lg:grid-cols-3' : 'flex flex-col'
-              )}>
+            {/* Results Grid/Table */}
+            {filteredResources.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredResources.map((resource) => (
                   <ResourceCard key={resource.id} resource={resource} />
                 ))}
               </div>
+            ) : (
+              <div className="text-center py-16">
+                <p className="text-fg-muted text-lg mb-2">No resources found</p>
+                <p className="text-sm text-fg-muted">Try adjusting your filters or search terms</p>
+              </div>
             )}
           </div>
         </div>
-      </Section>
+      </div>
     </div>
   );
 }
-
