@@ -5,8 +5,10 @@
     "entry_type": "mrf",
     "city": "Surabaya",
     "province": "East Java",
+    "country": "Indonesia",
     "coords": [112.7688, -7.2575],
     "status_badge": "verified",
+    "topics": ["recycling", "mrf"],
     "endorse_score": 4.5,
     "meta": {
       "description": "Material recovery facility processing 50+ tonnes/day, serving eastern Surabaya districts",
@@ -19,8 +21,10 @@
     "entry_type": "composting",
     "city": "Bandung",
     "province": "West Java",
+    "country": "Indonesia",
     "coords": [107.6089, -6.9344],
     "status_badge": "verified",
+    "topics": ["composting", "organics"],
     "endorse_score": 4.8,
     "meta": {
       "description": "Community composting center accepting residential and market organics; produces high-quality compost for urban agriculture",
@@ -33,8 +37,10 @@
     "entry_type": "refill",
     "city": "Jakarta",
     "province": "DKI Jakarta",
+    "country": "Indonesia",
     "coords": [106.8175, -6.2633],
     "status_badge": "verified",
+    "topics": ["refill", "zero-waste-shop"],
     "endorse_score": 4.2,
     "meta": {
       "description": "Zero waste shop offering bulk household products, personal care, and cleaning supplies"
@@ -46,8 +52,10 @@
     "entry_type": "collection_point",
     "city": "Jakarta",
     "province": "DKI Jakarta",
+    "country": "Indonesia",
     "coords": [106.8709, -6.1751],
     "status_badge": "verified",
+    "topics": ["waste-bank", "recycling"],
     "endorse_score": 3.9,
     "meta": {
       "description": "Community-run waste bank accepting paper, plastics, metals; members earn savings"
@@ -59,8 +67,10 @@
     "entry_type": "reuse_center",
     "city": "Ubud",
     "province": "Bali",
+    "country": "Indonesia",
     "coords": [115.2623, -8.5069],
     "status_badge": "verified",
+    "topics": ["repair", "reuse"],
     "endorse_score": 5.0,
     "meta": {
       "description": "Community repair space for textiles, electronics, furniture; monthly workshops"
@@ -72,8 +82,10 @@
     "entry_type": "policy_site",
     "city": "Jakarta",
     "province": "DKI Jakarta",
+    "country": "Indonesia",
     "coords": [106.8272, -6.2000],
     "status_badge": "verified",
+    "topics": ["policy", "advocacy"],
     "endorse_score": 4.0,
     "meta": {
       "description": "Provincial environment agency coordinating zero waste policies and programs"
@@ -85,8 +97,10 @@
     "entry_type": "landfill",
     "city": "Bekasi",
     "province": "West Java",
+    "country": "Indonesia",
     "coords": [106.9844, -6.3381],
     "status_badge": null,
+    "topics": ["landfill"],
     "endorse_score": 1.5,
     "meta": {
       "description": "Major landfill receiving waste from Jakarta and surrounding areas; capacity concerns flagged"
@@ -98,8 +112,10 @@
     "entry_type": "mrf",
     "city": "Makassar",
     "province": "South Sulawesi",
+    "country": "Indonesia",
     "coords": [119.4897, -5.1477],
     "status_badge": "verified",
+    "topics": ["recycling", "mrf"],
     "endorse_score": 4.1,
     "meta": {
       "description": "Regional material recovery facility; partnerships with local waste banks",
@@ -112,8 +128,10 @@
     "entry_type": "collection_point",
     "city": "Yogyakarta",
     "province": "Special Region of Yogyakarta",
+    "country": "Indonesia",
     "coords": [110.3695, -7.7956],
     "status_badge": "verified",
+    "topics": ["recycling", "e-waste"],
     "endorse_score": 4.3,
     "meta": {
       "description": "Drop-off point for recyclables and e-waste; operated by local youth group"
@@ -125,8 +143,10 @@
     "entry_type": "incinerator_flagged",
     "city": "Bogor",
     "province": "West Java",
+    "country": "Indonesia",
     "coords": [106.7942, -6.5971],
     "status_badge": null,
+    "topics": ["incinerator", "advocacy"],
     "endorse_score": 1.0,
     "meta": {
       "description": "Proposed waste-to-energy incinerator; community opposition and environmental concerns"
@@ -138,8 +158,10 @@
     "entry_type": "refill",
     "city": "Canggu",
     "province": "Bali",
+    "country": "Indonesia",
     "coords": [115.1383, -8.6482],
     "status_badge": "verified",
+    "topics": ["refill", "zero-waste-shop"],
     "endorse_score": 4.7,
     "meta": {
       "description": "Popular refill station for tourists and locals; cleaning products, oils, spices"
@@ -151,8 +173,10 @@
     "entry_type": "composting",
     "city": "Semarang",
     "province": "Central Java",
+    "country": "Indonesia",
     "coords": [110.4203, -6.9932],
     "status_badge": "verified",
+    "topics": ["composting", "organics"],
     "endorse_score": 4.4,
     "meta": {
       "description": "Neighborhood-scale composting serving 500+ households",
@@ -165,8 +189,10 @@
     "entry_type": "reuse_center",
     "city": "Jakarta",
     "province": "DKI Jakarta",
+    "country": "Indonesia",
     "coords": [106.8317, -6.1944],
     "status_badge": "verified",
+    "topics": ["reuse", "repair"],
     "endorse_score": 4.6,
     "meta": {
       "description": "Thrift store and repair workshop accepting donations; proceeds support community programs"
@@ -178,8 +204,10 @@
     "entry_type": "collection_point",
     "city": "Denpasar",
     "province": "Bali",
+    "country": "Indonesia",
     "coords": [115.2126, -8.6705],
     "status_badge": "verified",
+    "topics": ["waste-bank", "recycling"],
     "endorse_score": 4.2,
     "meta": {
       "description": "Central collection hub for 20+ neighborhood waste banks across Denpasar"
@@ -191,8 +219,10 @@
     "entry_type": "mrf",
     "city": "Medan",
     "province": "North Sumatra",
+    "country": "Indonesia",
     "coords": [98.6722, 3.6135],
     "status_badge": "verified",
+    "topics": ["recycling", "mrf"],
     "endorse_score": 3.8,
     "meta": {
       "description": "Sorting facility for mixed recyclables; serves North Sumatra region",

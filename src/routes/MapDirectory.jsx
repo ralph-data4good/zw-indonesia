@@ -276,28 +276,42 @@ export default function MapDirectory() {
                 
                 {/* View Toggle and Sort */}
                 <div className="flex items-center gap-4">
-                  <div className="inline-flex rounded-lg border border-border bg-white overflow-hidden shadow-sm">
+                  <div className="inline-flex rounded-lg border-2 border-border bg-white overflow-hidden shadow-sm">
                     <button
-                      onClick={() => setViewMode('grid')}
-                      className={`px-4 py-2.5 text-sm font-medium flex items-center justify-center transition-colors ${
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setViewMode('grid');
+                        console.log('Switched to grid view');
+                      }}
+                      className={`px-4 py-2.5 text-sm font-semibold flex items-center justify-center transition-all ${
                         viewMode === 'grid' 
                           ? 'bg-primary text-white shadow-sm' 
-                          : 'text-fg-muted hover:bg-neutral-50'
+                          : 'bg-white text-fg-muted hover:bg-neutral-50'
                       }`}
                       aria-label="Grid view"
+                      aria-pressed={viewMode === 'grid'}
                     >
-                      <GridIcon className="w-4 h-4" />
+                      <GridIcon className="w-5 h-5" />
                     </button>
                     <button
-                      onClick={() => setViewMode('table')}
-                      className={`px-4 py-2.5 text-sm font-medium flex items-center justify-center transition-colors ${
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setViewMode('table');
+                        console.log('Switched to table view');
+                      }}
+                      className={`px-4 py-2.5 text-sm font-semibold flex items-center justify-center transition-all ${
                         viewMode === 'table' 
                           ? 'bg-primary text-white shadow-sm' 
-                          : 'text-fg-muted hover:bg-neutral-50'
+                          : 'bg-white text-fg-muted hover:bg-neutral-50'
                       }`}
                       aria-label="Table view"
+                      aria-pressed={viewMode === 'table'}
                     >
-                      <List className="w-4 h-4" />
+                      <List className="w-5 h-5" />
                     </button>
                   </div>
                   
